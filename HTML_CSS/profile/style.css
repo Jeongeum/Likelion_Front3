@@ -1,0 +1,96 @@
+h1,h2,p,ul {
+    margin: 0;
+    padding: 0;  
+}
+
+li {
+    list-style-type: none;
+}
+h1 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+a{
+color: inherit;
+text-decoration: inherit;
+}
+
+.wrapper {
+    background-color: #ddd;
+    width: 800px; /* initial value */
+    margin: 0 auto;
+}
+
+.header {
+    background-size: cover; /*사진 크기가 현재 header 보다 작기 때문에 화면에 맞춰주려고 꽉채운다*/
+    background-image: url(images/cover04.png);
+    text-align: center; 
+    padding: 100px 0; /* 해더의 크기를 키워준다. */
+}
+
+.header img {
+    border-radius: 100px/50px;
+    border: 5px solid white;
+}
+
+.header h1 {
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.header p {
+width: fit-content;
+border-top: 5px solid;
+margin: 0 auto;
+padding: 10px 20px;
+}
+
+.section {
+    background-repeat: no-repeat;
+    background-position: right 30px center;
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+}
+
+.Information {
+    background-image: url(images/icon-information.png);
+}
+
+.skill {
+    background-image: url(images/icon-skills.png);
+}
+
+.section h2 {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer {
+    text-align: center;
+background-color: #eee;
+padding: 20px 0;
+}
+
+.link {
+padding: 10px 20px;
+display: inline-block;
+border-radius: 40px;
+border: 4px solid; /*여기에 색을 지정하지 않으면 current color가 적용된다.*/
+color: #ccc;
+}
+
+.link.black {
+    color: black;
+}
+
+.link.blue {
+    color: dodgerblue;
+}
+
+.link.purple {
+    color: violet;
+}
+
