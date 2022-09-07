@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    이름 : <input type="text" name="name">
+
+    <hr />
+    <!-- 
+        밑에 두 방식 중에 하나를 보통 사용한다.
+        1. 이름 : 부분 클릭 시 포커스가 안맞춰짐
+        2. 이름 : 부분 클릭 시 input에 포커스 맞춰짐
+    -->
+    <label for="">
+        이름 : <input type="text">
+    </label>
+
+    <hr />
+    <!-- 이때는 labeldml for과 input의 id를 맞춰줘야한다 -->
+    <label for="fullname">이름 : </label>
+    <input type="text" name="name" id="fullname">
+</body>
+
+</html>
