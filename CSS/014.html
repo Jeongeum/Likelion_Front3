@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 만약, important가 둘 다 적용되어있다면 순서에 영향을 받는다. (나중에 작성한게 적용) */
+        .one {
+            color: red !important;
+        }
+
+        .two {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 클래스 순서는 상관없고 스타일에서 뭐가 먼저 쓰였는지가 중요하다 -->
+    <!-- 태그 내 class에 기입되는 순서는 적용과 무관하다. -->
+    <!-- imporant는 inline css보다 우선한다. -->
+    <div class="one two">hello</div>
+    <div class="two one">hello</div>
+</body>
+
+</html>
