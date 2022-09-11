@@ -27,3 +27,205 @@
     url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff") format('woff'),
     url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf") format('opentype');
 }
+
+/* ir */
+.ir {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+  }
+
+body {
+    background-color: #5B2386;
+    font-family: 'GmarketSansMedium';
+    color: white;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.title {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 50px;
+}
+
+.title .clock {
+    position: relative;
+    width: 265px;
+    height: 265px;
+}
+
+.title .tit-img-container {
+    position: absolute;
+    width: 564px;
+}
+
+
+.title .tit-img {
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+margin-bottom: 50px;
+}
+
+.intro .img-txt {
+    margin-bottom: 50px;
+}
+.intro .intro-quotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.intro-quotes .img-quotes {
+    position: relative;
+    padding-top: 20px;
+}
+
+.txt-desc {
+    position: absolute;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.tit-desc {
+    font-family: GmarketSansBold;
+    font-size: 20px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.inputs input {
+    padding: 15px 20px;
+    margin: 0 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'GmarketSansMedium';
+    width: 200px;
+}
+.txt-wannabe {
+    margin-bottom: 20px;
+}
+
+.txt-time {
+    margin-bottom: 20px;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+.btn-exc {
+    display: flex;
+    align-items: center;
+    font-family: 'GmarketSansBold';
+    font-size :20px;
+    color: #5B2386;
+    background-color: #FCEE21;
+border-radius: 30px;
+padding: 10px 40px;
+cursor: pointer;
+word-break: keep-all;
+}
+
+
+
+/* section 결과 확인  */
+.cont-result {
+    display: flex;
+flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 72px;
+}
+
+.cont-result strong {
+    font-size: 72px;
+    font-weight: 700;
+}
+
+/* .prog-result {
+    font-size: 72px;
+    font-weight: 700;
+}
+
+.time-result {
+    font-size: 72px;
+    font-weight: 700;
+} */
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 21px 49px;
+    gap: 10px;
+}
+.btn-go {
+    width: 356px;
+    height: 66px;
+    background-color: #FCEE21;
+border-radius: 56px;
+font-size: 24px;
+font-family: 'GmarketSansBold';
+color: #5B2386;
+}
+
+.btn-share {
+    width: 191px;
+    height: 66px;
+    border-radius: 56px;
+    font-size: 24px;
+font-family: 'GmarketSansBold';
+color: #5B2386;
+}
+
+/* footer */
+
+.cont-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.5;
+    margin-top: 30px;
+    padding-bottom: 50px;
+}
+
+.cont-footer .txt-footer {
+    font-size: 10px;
+    padding: 20px 0;
+    text-align: center;
+}
