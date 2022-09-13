@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            background-color: green;
+        }
+
+        body {
+            background-color: red;
+        }
+
+        h1 {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        왜 red가 나오지 않고 green이 나올까?
+    왜 body보다 html 태그 스타일 적용이 우선되는가?
+=> body에 높이 값이 없어서?
+=> body에 background를 주면 실제 영역은 콘텐츠 크기만큼이지만 전체를 다 차지하게 된다.
+-->
+    <h1>hello world</h1>
+</body>
+
+</html>

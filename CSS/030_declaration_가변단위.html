@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0 auto;
+        }
+
+        .one {
+            width: 200px;
+            /* 자식요소에 height: 50%을 작성하려면 부모요소의 height를 지정해줘야한다. */
+        }
+
+        .two {
+            background-color: red;
+            /* 부모 요소 콘텐츠 넓이의 절반 크기 */
+            width: 50%;
+            height: 200px;
+            /* 부모의 높이가 auto인 경우 작동하지 않는다. */
+            /* height: 50%; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        <div class="two">hello world</div>
+    </div>
+</body>
+
+</html>
