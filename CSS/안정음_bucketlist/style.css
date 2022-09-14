@@ -23,6 +23,7 @@ body {
 }
 
 .bucket-box {
+    overflow: hidden;
     border-radius: 30px;
     box-shadow: 5px 5px 10px rgb(180, 180, 180);
 }
@@ -31,7 +32,7 @@ body {
     background-color: #fff;
     padding: 40px 0;
     color: #FF1493;
-    border-radius: 30px 30px 0 0;
+    /* border-radius: 30px 30px 0 0; */
 }
 
 .title h1 {
@@ -43,7 +44,7 @@ body {
 
 .lists {
     border-top: 4px solid #ddd;
-    border-radius: 0 0 30px 30px;
+    /* border-radius: 0 0 30px 30px; */
     background-color: #efefef;
     padding: 30px;
 }
