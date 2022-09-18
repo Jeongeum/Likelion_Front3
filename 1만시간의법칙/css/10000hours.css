@@ -54,6 +54,7 @@ body {
     margin: 0 auto;
 }
 
+/* header */
 .title {
 display: flex;
 justify-content: center;
@@ -77,6 +78,7 @@ margin-bottom: 50px;
     width: 100%;
 }
 
+/* main */
 main {
     display: flex;
     flex-direction: column;
@@ -94,6 +96,7 @@ margin-bottom: 50px;
 .intro .img-txt {
     margin-bottom: 50px;
 }
+
 .intro .intro-quotes {
     display: flex;
     flex-direction: column;
@@ -155,10 +158,10 @@ margin-bottom: 50px;
     font-size :20px;
     color: #5B2386;
     background-color: #FCEE21;
-border-radius: 30px;
-padding: 10px 40px;
-cursor: pointer;
-word-break: keep-all;
+    border-radius: 30px;
+    padding: 10px 40px;
+    cursor: pointer;
+    word-break: keep-all;
 }
 
 
@@ -166,7 +169,7 @@ word-break: keep-all;
 /* section 결과 확인  */
 .cont-result {
     display: flex;
-flex-direction: column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     line-height: 72px;
@@ -198,10 +201,10 @@ flex-direction: column;
     width: 356px;
     height: 66px;
     background-color: #FCEE21;
-border-radius: 56px;
-font-size: 24px;
-font-family: 'GmarketSansBold';
-color: #5B2386;
+    border-radius: 56px;
+    font-size: 24px;
+    font-family: 'GmarketSansBold';
+    color: #5B2386;
 }
 
 .btn-share {
@@ -209,8 +212,8 @@ color: #5B2386;
     height: 66px;
     border-radius: 56px;
     font-size: 24px;
-font-family: 'GmarketSansBold';
-color: #5B2386;
+    font-family: 'GmarketSansBold';
+    color: #5B2386;
 }
 
 /* footer */
@@ -228,4 +231,17 @@ color: #5B2386;
     font-size: 10px;
     padding: 20px 0;
     text-align: center;
+}
+
+/* modal */
+
+.cont-modal {
+  background-color: #fff;
+  width: 500px;
+}
+
+.modal-title strong{
+font-size: 80px;
+font-family: 'tvN Enjoystories';
+color: #5B2386;
 }
