@@ -18,82 +18,143 @@ h1, h2, h3 {
 
 ul, li {
 	list-style-type: none;
-	margin: 0;
-	padding: 0;
 }
+
+/* 가운데 정렬 */
 .wrapper {
-	background-color: antiquewhite;
+	/* background-color: antiquewhite; */
 	width: 1080px;
 	margin: 100px auto;
 }
 
+body {
+	background-color: #51318b;
+}
+
 /* header 영역 */
 .portfolio-header {
-	background-color: orange;
+	/* background-color: orange; */
 	display: flex;
 	align-items: center;
+	margin-bottom: 100px;
 }
 
 .portfolio-title {
-	background-color: tomato;
+	/* background-color: tomato; */
 	width: 26%;
-	font-size: 4rem;
-}
-
-.portfolio-title strong {
-	display: block;
 	font-size: 40px;
 	font-weight: 500;
+	color: #fff;
+}
+
+
+.portfolio-title strong {
+	display: inline-block;
+	font-size: 40px;
+	font-weight: 500;
+	position: relative;
+	
+}
+
+
+.portfolio-title strong::before {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 20px;
+	background-color: #d9501a;
+	position: absolute;
+	bottom: 0;
+	z-index: -1;
+}
+
+.portfolio-desc {
+	/* background-color: lightblue; */
+display: flex;
+align-items: center;
+width: 560px;
+color: #a887e1;
 }
 
 .portfolio-desc::before {
 	content: "";
-	width: 140px;
+	width: 300px;
 	height: 2px;
-	background-color: black;
+	background-color: currentColor;
 	margin-right: 30px;
-}
-
-.portfolio-desc {
-display: flex;
-align-items: center;
-width: 500px;
 }
 
 /* contents 영역 */
 .portfolio-contents {
-	background-color: lightgreen;
+	/* background-color: lightgreen; */
 	width: 100%;
-	margin-top: 100px;
 }
 
-
+.lists {
+	display: flex;
+	flex-direction: column;
+}
 
 .lists-item {
 	display: flex;
 	margin-bottom: 24px;
 	align-items: center;
+	overflow: hidden;
+}
+
+.item-cover {
+	width: 26%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.item-cover-bg {
+	width: 100%;
+	opacity: 0.6;
+	position: absolute;
+}
+
+.item-cover h2 {
+	font-size: 30px;
+	font-weight: 500;
+	z-index: 10;
+	color: #fff;
 }
 
 .lists-item:nth-child(2n) {
 	flex-flow: row-reverse;
 }
 
-.list-item:last-child {
+.lists-item:last-child {
 	margin-bottom: 0;
 }
 
-.lists-item h2 {
-	width: 26%;
-	font-size: 30px;
-	font-weight: 500;
-}
+
 
 .lists-item-contents {
-	width: 100%;
 	padding: 24px;
+	background-color: white;
+	flex-grow: 1;
 }
 
 .lists-item-contents h3{
 	font-size: 18px;
+	margin-bottom: 32px;
+	color: #51318b;
+}
+
+.lists-item li::before {
+	content: '';
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #a887e1;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.lists-item li {
+	margin-top: 12px;
 }
