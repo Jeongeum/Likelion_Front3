@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+
+    <style>
+        @keyframes jeongeum {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(100px, 0);
+            }
+
+            50% {
+                transform: translate(100px, 100px);
+            }
+
+            75% {
+                transform: translate(0, 100px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            animation: jeongeum 2s;
+
+            /* 3번 반복, 무한반복 */
+            /* animation-iteration-count: 3; */
+            animation-iteration-count: infinite;
+
+            /* 역방향, 정방향으로갔다가 역방향으로 되돌아가기, 역방향으로 갔다가 정방향으로 되돌아가기 */
+            /* animation-direction: reverse; */
+            /* animation-direction: alternate; */
+            /* animation-direction: alternate-reverse; */
+            /* animation-duration: 3s; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">hello</div>
+</body>
+
+</html>

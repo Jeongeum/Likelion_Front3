@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+
+    <style>
+        .box {
+            width: 100px;
+            height: 200px;
+            background-color: dodgerblue;
+            border: 1px solid black;
+            transition: all 1s;
+
+            /* 기준점 정하기 */
+            transform-origin: left bottom;
+        }
+
+        .box:hover {
+            /* 중심 기준 커지는 효과*/
+            /* transform: scale(2); */
+
+            /* 회전 */
+            /* transform: rotate(360deg) scale(2); */
+            /* transform: rotate(1turn); */
+
+            /* 위에 왼쪽 꼭짓점 기준 이동 */
+            /* transform: translate(100px, 100px); */
+            /* transform: translateX(100px); */
+
+            /* 비틀기 */
+            /* transform: skew(30deg); */
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">hello world</div>
+</body>
+
+</html>
