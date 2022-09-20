@@ -7,5 +7,5 @@
 |animals_fox|[animals_fox](https://jeongeum.github.io/Likelion_Front3/안정음_animals)|
 |bucketlist|[bucketlist](https://jeongeum.github.io/Likelion_Front3/안정음_bucketlist)|
 |weniv_login_page|[weniv_login_page](https://jeongeum.github.io/Likelion_Front3/0914_loginpage)|
-|zigzag|[zigzag](./zigzag)|
+|zigzag|[zigzag](https://jeongeum.github.io/Likelion_Front3/zigzag)|
 |1만 시간의 법칙|[1만 시간의 법칙](https://jeongeum.github.io/Likelion_Front3/1만시간의법칙/10000hours.html)|
