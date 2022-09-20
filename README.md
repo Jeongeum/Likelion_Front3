@@ -8,4 +8,4 @@
 |bucketlist|[bucketlist](./안정음_bucketlist)|
 |weniv_login_page|[weniv_login_page](./0914_loginpage)|
 |zigzag|[zigzag](./zigzag)|
-|1만 시간의 법칙|[1만 시간의 법칙](./1만시간의법칙)|
+|1만 시간의 법칙|[1만 시간의 법칙](./1만시간의법칙/10000hours.html)|
