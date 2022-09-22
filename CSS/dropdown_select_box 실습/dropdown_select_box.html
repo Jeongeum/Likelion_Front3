@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .btn-select {
+            width: 200px;
+            height: 40px;
+            border: 1px solid #C4C4C4;
+            border-radius: 10px;
+            font-size: 12px;
+            padding: 13px 14px;
+            background-color: #fff;
+        }
+
+
+
+        .btn-select::after {
+            display: inline-block;
+            content: ' ';
+            width: 10px;
+            height: 10px;
+            background-image: url(./images/icon-Triangle-down.png);
+
+        }
+
+        .btn-select:focus {
+            border: 1px solid #9b51e0;
+            border-radius: 10px;
+        }
+
+        .btn-select:focus::after {
+            display: inline-block;
+            content: ' ';
+            width: 10px;
+            height: 10px;
+            background-image: url(./images/icon-Triangle-up.png);
+        }
+
+        .lists {
+            width: 200px;
+            background: #FFFFFF;
+            border: 1px solid #C4C4C4;
+            box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+        }
+
+        .lists li button {
+            background: #FFFFFF;
+            border: none;
+            padding: 12px 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn-select">최애 프로그래밍 언어</button>
+    <ul class="lists">
+        <li><button>Python</button></li>
+        <li><button>Java</button></li>
+        <li><button>JavaScript</button></li>
+        <li><button>C#</button></li>
+        <li><button>C/C++</button></li>
+    </ul>
+</body>
+
+</html>
