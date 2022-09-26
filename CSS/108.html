@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            /* 이미지의 원본 사이즈 이상으로 커진다. */
+            width: 100%;
+            /* 이미지의 원본 사이즈 이상으로 커지지 않는다. */
+            max-width: 100%;
+        }
+
+        /* 
+        left top/ 100% : 이미지의 위치가 왼쪽 위로 간다. background-position은 무조건 size앞에 와야한다. 그래서 구분으로 /를 써준다.
+
+        반응형 백그라운드 이미지를 만들고 싶은데 cover을 쓰고 있다면 position에 center를 준다. 
+         */
+        article {
+            width: 100vw;
+            height: 100vh;
+            background: url('https://images-ext-1.discordapp.net/external/6ApVKJXhS6wxOjzaXt_eJjpsj63QJK4ifGO7TMli5ss/%3Fixlib%3Drb-1.2.1%26ixid%3DMnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2l0eXxlbnwwfHwwfHw%253D%26w%3D1000%26q%3D80/https/images.unsplash.com/photo-1477959858617-67f85cf4f1df?width=720&height=443') center/ cover no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <img src="https://pbs.twimg.com/media/E4dUsZpVEAArf2C.jpg:large" alt=""> -->
+
+    <article>
+
+    </article>
+</body>
+
+</html>
