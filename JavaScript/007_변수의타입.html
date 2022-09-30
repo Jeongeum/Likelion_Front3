@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(typeof 'hello world') // String
+        console.log(typeof 100) // Number
+        console.log(typeof NaN) // Number
+        console.log(typeof true) // Boolean
+        console.log(typeof undefined) // undefined
+        console.log(typeof Symbol()) // Symbol
+        console.log(typeof null) // Object, 여기서부터 js가 어려워 집니다.
+        console.log(typeof []) // Object, 여기서부터 js가 어려워 집니다. 왜 Array가 아닐까요?
+        console.log(typeof {}) // Object
+
+        console.log(function () {}) // function
+        console.log(typeof /정규표현식/gi) // Object
+
+        // Object.prototype.toString.call(데이터).slice(8, -1);
+        // 로 확실하게 알 수 있습니다.
+
+        console.log("------")
+        console.log(10 + 10)
+        console.log("10" + 10)
+        console.log(10 + "10")
+        console.log("10" + "10")
+
+        console.log("----형변환----")
+        console.log(Number("10") + Number("10")) // 권장하지 않음
+        console.log(parseInt("10") + parseInt("10")) // 권장함
+        console.log(String(10) + String(10))
+    </script>
+</body>
+
+</html>

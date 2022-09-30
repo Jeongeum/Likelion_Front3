@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // string, 문자열
+        let txt = "ABCDEFGHIJK"
+        let txt2 = "mom said 'hello world'";
+        // 이스케이프 문자 \(역슬래쉬)를 넣어서 특수문자 넣으면 \뒤의 문자를 그대로 출력해준다.
+        let txt3 = "mom said \"hello world\"";
+        let txt4 = 'mom said "hello world"';
+        // 개행
+        let txt5 = "a\nb\ncd";
+        // 탭 -> \t도 하나의 문자로 본다
+        let txt6 = "a\tbcde";
+        let txt7 = "10";
+        let txt8 = "10.1abc";
+
+        console.log(txt + txt)
+        console.log(txt[0])
+        console.log(txt[4] + txt[5] + txt[6])
+        console.log(txt2)
+        console.log(txt3)
+        console.log(txt4)
+        console.log(txt5)
+        console.log(txt6)
+        console.log(txt6[1])
+        console.log(txt7 + txt7)
+        // parseInt : 숫자와 문자가 포함된 문자열 "2022년도" 에서 숫자부분만 뽑아냄 (소수점 포함 x)
+        // Number : 숫자만 있는 문자열에서 소수점 포함 숫자부분을 뽑아냄
+        console.log(parseInt(txt7) + parseInt(txt7));
+        console.log(parseFloat(txt8) + parseFloat(txt8));
+
+        // 스트링에 메서드
+        console.log(txt.length); // 11개의 글자지만, index는 length - 1
+
+        // indexOf는 정규표현식을 허용하지 않습니다.
+        console.log(txt.indexOf("E"));
+        console.log(txt.search("E"));
+
+        console.log(txt.indexOf("Z"));
+        console.log(txt.search("Z"));
+
+        let regExp = /CD/;
+        console.log(txt.search(regExp));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script></script> -->
+</head>
+
+<body>
+    <!-- <script></script> -->
+    <p id="one">p 태그 입니다!</p>
+    <p id="two">p 태그 입니다!</p>
+    <span id="money"></span>원
+
+    <!-- 바디태그의 가장 뒤에 작성 -->
+    <script>
+        // about:blank에서 개발자 도구를 열고, console 창에서 document.이라고 작성하면 여러가지 document 메서드를 볼 수 있다.
+        document.getElementById("one").innerHTML = "hello <strong>world1</strong>";
+        document.getElementById("money").innerHTML = "1000";
+
+        console.log("안녕하세요 console.log 배우는 중입니다.");
+        // window 안적어도 똑같이 동작하지만 적는 이유 : window 창 안에서의 경고창을 출력하기 위해서.
+        window.alert("hello world3");
+        document.write("hello world4");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+</head>
+
+<body>
+    <script>
+        // 변수 선언 방법이 아닌, 변수로 가져올 수 있는 값을 알아보자.
+        // 변수 : 변할 수 있는 값
+
+        let x = 10;
+        let y = 100;
+        x = 15;
+
+        console.log(x + y);
+
+        // 한글 (대부분 한글로 작성하는 것은 권장하지 않는다.)
+        let 정음 = 1202;
+        console.log(정음 + ' birthday')
+        console.log(정음 + 정음);
+
+        // 숫자 (에러난다)
+        // let 10 = 100;
+
+        // 숫자 + 문자 (에러난다)
+        // let 1a = 100;
+
+        // 문자 (대소문자를 가린다.) -> 아스키코드 값에서 a와 A는 다른 것 처럼!
+        let abc = 100;
+        let ABC = 200;
+        let aBc = 300;
+
+        // 특수문자 ( _와 $만 가능 )
+        // let ..\user\document  = 10; //error
+        // let $__$ = 548; // 이렇게 쓰지마세요.
+        // let $,_ = 10; // 이렇게 쓰지마세요.
+        let _ = 100; // 반복문 돌 때 의미없는 변수에 사용
+        // let __ = 100; // 이렇게 쓰지마세요.
+
+        // let π = 100; // 사용하지는 않는데 책에 잘못된 내용이 많습니다.
+        // let ✂ = 100;
+        // let ➕ = 100;
+        // console.log(π + π);
+
+        // 변수는 let, const, var, if, else 이런 지정된 키워드로 사용하지 않습니다.
+    </script>
+</body>
+
+</html>

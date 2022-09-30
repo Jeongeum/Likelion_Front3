@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let txt = 'abcAHelloBC';
+        let txt2 = 'paullab CEO leehojun CEO'
+        let regExp = /[A-Z]/g;
+        console.log(txt.search(regExp));
+
+        // slice(시작인덱스, 종료인덱스) : 시작인덱스부터 종료인덱스 바로 전까지 반환
+        // substring(시작인덱스, 종료인덱스) : 시작인덱스부터 종료인덱스 바로 전까지 반환
+        console.log(txt2.slice(1, 7));
+        console.log(txt2.slice(7, 1)); // 공백도 포함
+        console.log(txt2.substring(1, 7)) // 1번째부터 7만큼 -> aullab
+        console.log(txt2.substring(7, 1)) // 7번째부터 1만큼이 아니라 1번째부터 7만큼으로 순서 뒤바뀜 -> aullab
+
+        // substr(시작위치, 길이) : 시작인덱스부터 길이만큼 반환
+        console.log(txt2.substr(8, 3));
+        console.log(txt2.substr(txt2.indexOf("C"), 3))
+        console.log(txt.substr(5, 1)) // a
+
+
+        // replace(바꿀문자열, 바뀔문자열) : 제일 먼저나오는 것 한번만 바뀜
+        console.log(txt2.replace("CEO", "CTO")) // CEO를 찾아 CTO로 바꿈
+        console.log(txt2.replace(/"CEO"/g, "CTO")) // ""도 문자열로 처리 -> "CEO" 를 찾아 CTO로 바꿔야 하는데 "CEO" 는 없으므로 안바뀜
+        console.log(txt2.replace(/CEO/g, "CTO")); // 글로벌로 찾아서 다 바꿈
+
+        // replaceAll() : 바꿀문자열이 있는 곳은 다 바꿔줌
+        console.log(txt2.replaceAll('CEO', 'CTO'))
+
+        // toUpperCase() : 소문자 -> 대문자
+        // toLowerCase() : 대문자 -> 소문자
+        console.log(txt);
+        console.log(txt.toUpperCase());
+        console.log(txt.toLowerCase());
+
+        // split() : () 안의 조건을 기준으로 배열로 나눠준다. 
+        console.log(txt2.split(' '));
+        console.log('010-1234-5678'.split("-"));
+
+        // trim : 
+        console.log('     abc');
+        console.log("     abc".trim());
+    </script>
+</body>
+
+</html>

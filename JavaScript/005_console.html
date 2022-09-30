@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+</head>
+
+<body>
+    <script>
+        console.log('hello!')
+
+        let d = {
+            'one': 1,
+            'two': 2,
+            'three': 3
+        }
+        console.dir(d)
+
+        let d2 = [10, 20, 30];
+        console.dir(d2)
+        console.info("info")
+
+        // console.group() : 데이터 계층 구조를 정할 때 사용한다.
+        // 그룹을 열고난후 또 그룹을 선언하면 계층이 생기고 그룹앤드를 선언하면 안쪽부터 닫아나간다.
+        console.group("one")
+        console.log("호준/팀원")
+        console.log("유정/팀원")
+        console.log("혜연/팀원")
+        console.group("two")
+        console.log("태수/팀장")
+        console.groupEnd()
+        console.log("end")
+        console.table(d2)
+        console.error("error")
+        console.error("정신차렷!")
+        console.warn("실행은 해줄게, 다만 경고문구를 읽어봐")
+
+        // 번외) 콘솔창 꾸미기
+        // 꾸미고 싶다면 문자열 앞에 %c 를 써준다. 그럼 , 뒤에 들어가는 문구가 %c 뒤에 들어가는 문구를 꾸며준다.
+        console.log("%chello world", "color:red;font-size:32px");
+    </script>
+</body>
+
+</html>
