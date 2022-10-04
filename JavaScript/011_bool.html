@@ -9,7 +9,34 @@
 </head>
 
 <body>
+    <script>
+        // const (참조 변경 불가) , let (변경 가능), var (그냥 쓰지마세요)
+        let one = true; // 다른 언어는 True 인 경우도 있다.
+        let two = false;
+        let three;
+        let four = null;
+        let five = Infinity;
 
+        console.log(Boolean('')); // false
+        console.log(Boolean(" ")); //true -> 공백문자가 있다고 판단하기 때문에
+        console.log(Boolean(0)); // false
+        console.log(Boolean(100)); // true -> 0 이외의 모든 숫자는 true
+        console.log(Boolean(-100)); // true
+        console.log(Boolean(three)); // undefined -> false
+        console.log(Boolean(four)); // null -> false
+        console.log(Boolean(five)); // infinity = true
+        one = 0;
+
+        // 우리를 힘들게 하는 js
+        console.log(Boolean([])); // 비어있는데 true임 ^^;;;
+        console.log(Boolean({}));
+
+        if (one) {
+            console.log("hello")
+        } else {
+            console.log("world")
+        }
+    </script>
 </body>
 
 </html>

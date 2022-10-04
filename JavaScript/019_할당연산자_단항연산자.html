@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할당 연산자</title>
+</head>
+
+<body>
+    <script>
+        let a = 10;
+        a = a + 10;
+        console.log(a)
+
+        let b = 10
+        b += 10
+        console.log(b)
+
+        let c = 10
+            ++c; // 11
+        --c; // 10
+        c++; // 10
+        c--; // 10
+        console.log(c) //10
+
+        let d = 10
+        console.log(d++) // 10 (선할당 후증가)
+        console.log(++d) //12 (선증가 후할당)
+
+        let e = 10
+        console.log(++e) // 11 
+        console.log(e) // 11
+    </script>
+</body>
+
+</html>
