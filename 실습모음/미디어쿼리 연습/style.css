@@ -121,7 +121,7 @@ strong {
 	font-size: 1.6rem;
 }
 
-/* 태블릿 */
+/* 태블릿 
 @media (max-width: 768px) {
 	.wrap {
 		flex-direction: column;
@@ -156,9 +156,43 @@ strong {
 		color: #fff;
 	}
 	
+}*/
+
+/* 태블릿 - 강사님과 같이 */
+@media (max-width: 768px) {
+	.wrap {
+		flex-direction: column;
+		gap: 6rem; /* 60px */
+		margin: 10rem auto;
+	}
+
+	.section-text p {
+		font-size: 1.8rem;
+	}
+
+	.section-field ul {
+		flex-direction: row;
+	}
+
+	.section-field ul li {
+		/* width: 50%; */
+		flex-basis: 50%;
+	}
+
+
+	.section-field ul li a {
+		gap: 9.8rem;
+		padding: 3em 3em 2em 3em;
+		font-size: 1rem;
+	}
+	
+	.section-field .field-title {
+		font-size: 2.4em;
+	}
+	
 }
 
-/* 모바일 */
+/* 모바일 
 @media (max-width: 500px) {
 	.section-text h1 {
 		font-size: 3.6rem;
@@ -180,6 +214,42 @@ strong {
 
 	.section-field .field-title {
 		font-size: 2.0rem;
+	}
+
+	.section-field .field-go {
+		font-size: 1.4rem;
+	}
+}*/
+
+
+/* 모바일 - 강사님과 같이 */
+@media (max-width: 500px) {
+	.wrap {
+		gap: 4rem;
+		max-width: calc(100%-3.2rem);
+	}
+
+	.section-text h1 {
+		font-size: 3.6rem;
+	}
+
+	.section-text p {
+		margin-top: 1.4rem;
+		font-size: 1.4rem;
+	}
+
+	.section-field ul {
+		flex-direction: column;
+		gap: 1.4rem;
+	}
+
+	.section-field ul li a {
+        padding: 3em 3em 2em 3em;
+        gap: 11.2rem;
+    }
+
+	.section-field .field-title {
+		font-size: 2em;
 	}
 
 	.section-field .field-go {
