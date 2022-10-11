@@ -1,76 +1,102 @@
-// 파선아실 : 파라미터 선언될 때 , 아규먼트 실행될 때
-function 안녕(파라미터) {
-  console.log(파라미터);
-  console.log("hello world");
-  return 100;
+//////////////함수의 구조/////////////////
+
+// 파선아실
+function 안녕(파라미터){
+    console.log(파라미터)
+    console.log('hello world')
+    return 100
 }
 
-let 아규먼트 = 1000;
-안녕(아규먼트);
+let 아규먼트 = 1000
+안녕(아규먼트)
+console.log(안녕(아규먼트) + 안녕(아규먼트))
 
-function 안녕() {
-  console.log("hello world");
-}
-안녕(); // undefined
-console.log(String(안녕()) + String(안녕())); // undefinedundefined
+/*
+console.log('hello world')
+hello world
+undefined
 
-function 안녕() {
-  console.log("hello world");
-  return;
-}
-안녕(); // undefined
-console.log(String(안녕()) + String(안녕())); // undefinedundefined
-
-// return은 반환
-function 안녕() {
-  console.log("hello world");
-  return 10;
-}
-안녕();
-console.log(String(안녕()) + String(안녕())); // 1010
-
-// return 만나면 함수가 종료되므로 그 뒤는 실행하지 않음
-function 안녕1() {
-  console.log("hello");
-  console.log("hello");
-  console.log("hello");
-  return 100;
-  console.log("hello");
-  console.log("hello");
-  console.log("hello");
-}
-
-안녕1();
-
-/* 
-위와 같은 의미
-function 안녕1() {
-  console.log("hello");
-  console.log("hello");
-  console.log("hello");
-  if(특정조건) {
-    return 100;
-  }
-  else {
-    console.log("hello");
-    console.log("hello");
-    console.log("hello");
-    return 1000;
-  }
-  // 여기는 실행하지 않음
-  console.log("실행하지 않아요")
-  
-}
-
-안녕1();
+console.log(console.log('hello world'))
+hello world
+undefined
+undefined
 */
+
+// 파선아실
+function 안녕(){
+    console.log('hello')
+}
+
+안녕()
+console.log(String(안녕()) + String(안녕()))
+
+// 파선아실
+// return은 반환
+function 안녕(){
+    console.log('hello')
+    return 10
+}
+
+안녕()
+console.log(String(안녕()) + String(안녕()))
+
+// 파선아실
+function 안녕(){
+    console.log('hello')
+    // return undefined
+    return
+}
+
+안녕()
+console.log(String(안녕()) + String(안녕()))
+
+
+function 안녕(){
+    console.log('hello')
+    console.log('hello')
+    console.log('hello')
+    return
+    console.log('hello')
+    console.log('hello')
+    console.log('hello')
+}
+
+안녕()
+
+// 질의응답
+function 안녕(){
+    console.log('hello')
+    console.log('hello')
+    console.log('hello')
+    if (특정조건){
+        return 100
+    }
+    else {
+        console.log('hello')
+        console.log('hello')
+        console.log('hello')
+        return 1000
+    }
+    return
+    // 아래 코드는 실행하지 않습니다.
+    .
+    .
+    .
+    .
+    .
+}
+
+console.log(안녕())
+
+console.log(String(console.log('hello')) + String(console.log('hello'))) // undefinedundefined
+
 
 // 이렇게 작성하시면 안됩니다.
 function sum(a, b) {
-  return a * b;
+    return a * b
 }
 
-console.log(sum(10, 20));
+console.log(sum(10, 20))
 
 //////////////함수를 사용하는 이유/////////////////
 
@@ -81,6 +107,7 @@ console.log(sum(10, 20));
 // 참고만
 // 4. 추상화로 개발하는 것이 객체지향 프로그래밍(OOP, Object Oriented Programming) 언어의 언어 철학에 맞다.
 
+
 /*
 땅파기() // 10만줄
 기반다지기() // 10만줄
@@ -90,23 +117,25 @@ console.log(sum(10, 20));
 */
 
 //////////////함수의 다양한 형태/////////////////
-function 함수1(a, b, c) {
-  return a + b + c;
+
+// 1.함수의 아규먼트에 따른 반환값
+function 함수1 (a, b, c){
+    return a + b + c
 }
 
 // 콘솔창의 기능이에요. 마지막 라인에 한하여 console.log()를 찍지 않아도 return값을 console창에 출력해줍니다.
-함수1(10, 20, 30);
-함수1(10, 20, 50);
+함수1(10, 20, 30) 
+함수1(10, 20, 50)
 
 // 다음 실행 값은?
-console.log(함수1(10, 20, 30));
-console.log(함수1(10, 20, 50));
+console.log(함수1(10, 20, 30))
+console.log(함수1(10, 20, 50))
 
 // 필요 이상의 아규먼트를 넣었을 때
-함수1(10, 20, 30, 40); // Error를 뿜지 않습니다. 60
+함수1(10, 20, 30, 40) // Error를 뿜지 않습니다. 60
 
 // 필요 이하의 아규먼트를 넣었을 때
-함수1(10, 20);
+함수1(10, 20)
 
 /*
 function 함수1 (a, b, c){
@@ -115,36 +144,39 @@ function 함수1 (a, b, c){
 함수1(10, 20) // '30undefined'
 */
 
-// 구조분해할당을 이용한 아규먼트 처리
-function 함수2(a, b, ...c) {
-  console.log(c);
-  return Math.max(...c);
+// 2. 구조분해할당을 이용한 아규먼트 처리
+function 함수2(a, b, ...c){
+    console.log(c)
+    return Math.max(...c)
 }
 
-함수2("hello", "world", 10, 20, 30, 40);
+함수2('hello', 'world', 10, 20, 30, 40)
 
-function 함수2([a, b], ...c) {
-  console.log(a);
-  console.log(b);
-  console.log(c);
+function 함수2([a, b], ...c){
+    console.log(a)
+    console.log(b)
+    console.log(c)
 }
 
-함수2([1, 2], 10, 20, 30, 40);
+함수2([1, 2], 10, 20, 30, 40)
 
-// 기본값 할당
-function 함수3(a = 10, b = 20, c = 30) {
-  return a + b + c;
+// 3. 기본값 할당
+function 함수3(a=10, b=20, c=30){
+    return a + b + c
 }
 
-console.log(함수3());
-console.log(함수3(100));
-console.log(함수3(100, 200));
-console.log(함수3(100, 200, 300));
+console.log(함수3())
+console.log(함수3(100))
+console.log(함수3(100, 200))
+console.log(함수3(100, 200, 300))
 
-console.log(함수3((c = 1000))); // 1030이 되어야할 것 같은데 1050이 되었다.
-console.log(함수3((c = 1000), (a = 2000))); // 3020이 되어야할 것 같은데 3030이 되었다.
+console.log(함수3(c=1000)) // 1030이 되어야 하는거 아니에요? 
+// 1050
 
-// 값이 순서대로 들어갔다.
+console.log(함수3(c=1000, a=2000)) // 3020이 되어야 하는거 아니에요?
+// 3030
+
+// 값이 순서대로 들어갔습니다.
 
 // 4. 함수에서 객체를 아규먼트로 전달받는 방법
 // https://www.freecodecamp.org/news/elegant-patterns-in-modern-javascript-roro-be01e7669cbd/
@@ -365,45 +397,42 @@ for (const i of txt) {
 }
 
 console.log(result)
-/*
-n               n <= 1      return
-reverse(5)    5       false       5 * reverse(4) = 120
-reverse(4)    4       false       4 * reverse(3) = 24
-reverse(3)    3       false       3 * reverse(2) = 6
-reverse(2)    2       false       2 * reverse(1) = 2
-reverse(1)    1       true        1
-*/
+
 
 // 지역변수와 전역변수
 
+// 스코프에 대한 좋은 글
+// https://velog.io/@bico/JavaScript-%EB%A0%89%EC%8B%9C%EC%BB%AC-%EC%8A%A4%EC%BD%94%ED%94%84lexical-scope
+
 // 블록레벨스코프
-if(true) {
+if(true){ // for문이어도 마찬가지입니다.
     let x = 10;
     const y = 10;
 }
-    console.log(x,y)
+console.log(x, y)
 
 // 밖에 선언된 x는 함수 내부에서도 접근 가능합니다.
 let x = 100
-function xplus() {
-    x = x+10
+function xplus(){
+    x = x + 10
 }
+
 xplus()
 console.log(x)
 
 // 함수가 종료된 다음에는 선언된 변수는 휘발됩니다.
-function xplus() {
+function xplus(){
     let x = 100
-    x = x+10
+    x = x + 10
 }
+
 xplus()
 console.log(x)
 
-
 // 함수 안에 함수
-function a() {
+function a(){
     console.log('a 실행')
-    function b() {
+    function b(){
         console.log('b 실행')
     }
     b()
@@ -412,23 +441,27 @@ function a() {
 a()
 
 // 화살표 함수
-function 함수1(x,y) {
-    return x+y
+function 함수1(x, y) {
+    return x + y
 }
 
-let 함수2 = (x,y) => x+y;
+let 함수2 = (x, y) => x + y
 
-함수1.name // "함수1"
-함수2.nmae // "함수2"
+함수1.name
+'함수1'
+함수2.name
+'함수2'
+console.dir(함수1)
 
-function 함수1(x,y) {
-    let z = x+y
+function 함수1(x, y) {
+    let z = x + y
     return z
 }
 
-let 함수2 = (x,y) =>{
-    let z = x+y
+let 함수2 = (x, y) => {
+    let z = x + y
     return z
 }
 
-// 화살표 함수와의 다른 점? -> 호이스팅이 다르다. (035파일로 이동)
+// 호이스팅이 다릅니다.
+// -> 35번 파일로 이어집니다.
