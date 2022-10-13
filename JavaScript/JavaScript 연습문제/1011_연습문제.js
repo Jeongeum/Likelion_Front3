@@ -1,15 +1,23 @@
 // // 1. 연습문제
 
 // // 1.1 다음 값의 평균을 구하세요.
-let 점수 = [10, 20, 30, 10, 20, 30, 40, 10];
-let avg = 점수.reduce((acc, cur) => acc + cur, 0) / 점수.length;
+let arrNum = [10, 20, 30, 10, 20, 30, 40, 10];
+let avg = arrNum.reduce((acc, cur) => acc + cur, 0) / arrNum.length;
 console.log(avg);
-let 분산 = 0;
-for (const num of 점수) {
-  분산 += (num - avg) ** 2;
-}
-console.log(분산 / 점수.length);
 
+// 1.2 다음 값의 분산를 구하세요.
+let variance = 0;
+for (const num of arrNum) {
+  variance += (num - avg) ** 2;
+}
+console.log(variance / arrNum.length);
+
+// 분산 다른 방법
+let variance =
+  arrNum.map((x) => (x - avg) ** 2).reduce((acc, cur) => acc + cur, 0) /
+  arrNum.length;
+
+// console.log(variance/arrNum.length);
 // 2. 연습문제
 // 다음 string의 평균 값을 구하세요
 const s = "5, 4, 10, 2, 5";
