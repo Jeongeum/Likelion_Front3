@@ -43,7 +43,7 @@ fetch("http://test.api.weniv.co.kr/mall")
     const price = document.createElement("p");
 
     productName.textContent = `상품명 : ${data.productName}`;
-    price.textContent = `상품명 : ${data.price}`;
+    price.textContent = `가격 : ${data.price}`;
 
     main.appendChild(productName);
     main.appendChild(price);
