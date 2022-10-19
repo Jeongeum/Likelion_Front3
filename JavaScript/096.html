@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopPropagation() 실습</title>
+</head>
+
+<body>
+    <h1>나의 todo list</h1>
+    <p>1. 오늘 저녁에는 부대찌게를 끓여 먹겠다.<button type="button">삭제</button></p>
+    <p>2. 후식으로 슈팅스타를 먹겠다.<button type="button">삭제</button></p>
+    <p>3. 자기 전에 반드시 내일 아침 메뉴를 생각해두겠다.<button type="button">삭제</button></p>
+
+    <!-- 
+        위와 같은 HTML코드 구조가 있을 때
+
+        1. P 태그를 클릭하면 p 태그의 컨텐츠를 출력하는 alert 창을 띄워주고
+        2. 삭제 버튼을 클릭하면 삭제할 것인지를 물어보는 confirm 창을 띄워주고, 확인을 누르면 P태그를 삭제합니다.
+        
+        내가 짠 코드
+        <script>
+        const p = document.querySelectorAll("p")
+        const btn = document.querySelector("button")
+        // console.log(p)
+
+        p.forEach(todo => {
+            console.log(todo.childNodes)
+            todo.addEventListener("click", (e) => {
+                alert(todo.childNodes[0].data)
+                e.stopPropagation()
+            })
+        }, true)
+
+        btn.addEventListener("click", () => {
+            if (confirm("삭제하시겠습니까?")) {
+                todo.remove()
+            }
+
+        })
+    </script>
+ -->
+
+    <script>
+        const txts = document.querySelectorAll("p")
+        const btns = document.querySelectorAll("button")
+
+        // for (const item of txts) {
+        //     item.addEventListener("click", () => {
+        //         alert(event.target.textContent.slice(0, -2)); // 맨뒤에서 -2까지 삭제
+        //     })
+        // }
+
+
+        // ie 지원이 되지 않는다.
+        // txts.forEach((item) => {
+        //     item.addEventListener("click", () => {
+        //         alert(event.target.textContent.slice(0, -2)); // 맨뒤에서 -2까지 삭제
+        //     })
+        // })
+
+
+        // nodelist로 쓰면 ie 지원안되는게 똑같기 때문에 다음과 같이 써줘야 한다. (forEach문 리팩토링)
+        Array.prototype.forEach.call(txts, (item) => {
+            item.addEventListener("click", () => {
+                console.log(event.target)
+                alert(event.target.textContent.slice(0, -2)); // 맨뒤에서 -2까지 삭제
+            })
+        }) // array로부터 foreach문을 불러온다.?
+
+        for (const item of btns) {
+            item.addEventListener("click", (event) => {
+                console.log(event)
+                const result = confirm("삭제 하시겠습니까?")
+
+                // 버블링 차단.
+                // event.stopPropagation();
+                if (result) {
+                    item.parentElement.remove();
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

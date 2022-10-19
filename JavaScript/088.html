@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>원본 요소:</h3>
+    <p id="source">
+        <style>
+            #source {
+                color: red;
+            }
+        </style>
+        아래에서<br>이 글을<br>어떻게 인식하는지 살펴보세요.
+        <span style="display:none">숨겨진 글</span>
+    </p>
+    <h3>textContent 결과:</h3>
+    <!-- <textarea id="textContentOutput" rows="6" cols="30" readonly>...</textarea> -->
+    <h3>innerText 결과:</h3>
+    <!-- <textarea id="innerTextOutput" rows="6" cols="30" readonly>...</textarea> -->
+    <h3>innerHTML 결과:</h3>
+
+    <div id="innerT"></div>
+    <div id="innerH"></div>
+    <div id="content">
+        textContent🥸
+        <span style="display: none;">숨겨진 텍스트를 볼 수 있을까?</span>
+    </div>
+
+    <script>
+        const content = document.getElementById("content");
+
+        console.log(content.textContent)
+        console.log(content.innerHTML)
+        console.log(content.innerText)
+
+        const source = document.getElementById('source');
+
+        console.log("textContent: " + source.textContent); // p태그 내에 코드에서 보이는 그대로 출력
+
+        console.log("innerText: " + source.innerText); // p태그 내에 코드에서 보이는 것을 요소 빼고 출력
+
+        console.log("innerHTML:" + source.innerHTML)
+        // const textContentOutput = document.getElementById('textContentOutput');
+        // const innerTextOutput = document.getElementById('innerTextOutput');
+
+        // textContentOutput.innerHTML = source.textContent;
+        // innerTextOutput.innerHTML = source.innerText;
+    </script>
+</body>
+
+</html>
