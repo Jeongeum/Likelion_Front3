@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+    <title>Document</title>
     <link rel="stylesheet" href="style/normalize.css">
-    <title>perspective 실습</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
@@ -26,7 +26,6 @@
     </article>
 
     <script>
-        // js로 고도화 작업
         const arrPic = [
             "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/jammanbo.png",
             "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/ev.png?raw=true",
@@ -35,36 +34,37 @@
             "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/nyaong.png",
             "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/pulin.png",
             "https://raw.githubusercontent.com/nugurejeil/sharingPhoto/main/weirdseed.png"
-        ]
+        ];
+
+
 
         const center = document.querySelector('.list-item');
+
         arrPic.forEach(item => {
-            const elLi = document.createElement("li");
-            elLi.innerHTML = `<img src="${item}" alt="">`;
+            const elLi = document.createElement('li');
+            elLi.innerHTML = `<img src="${item}" alt ="">`;
             center.appendChild(elLi);
         });
 
-
         const items = document.querySelectorAll('.list-item li');
 
-
-        // 반지름  = 둘레 / 2 / 3.14
-        const radius = items[0].offsetWidth * items.length / 3.14 / 2; // 정수 값으로 요소의 넓이 값을 반환하는 속성
+        // 반지름 구하기 : 둘레 / 2 / 3.14
+        const radius = items[0].offsetWidth * items.length / 3.14 / 2;
 
         items.forEach((item, index) => {
-            item.style.transform = `rotateY(${360 / items.length * index}deg) translateZ(${radius}px)`
-
-
-        })
+            console.log(index);
+            item.style.transform = `rotateY(${360 / items.length * index}deg) translateZ(${radius}px)`;
+        });
 
         const angle = 360 / items.length;
         let currAngle = 0;
 
 
-        document.addEventListener('click', function (event) {
 
-            // clientX : 브라우저 화면 왼쪽 끝에서의 수평 거리를 반환
-            // screenX : 사용자 스크린 화면 왼쪽 끝에서의 수평 거리를 반환 (듀얼 모니터 전체 크기를 반환)
+        document.addEventListener('click', function () {
+
+            // clientX : 브라우저 화면 왼쪽 끝에서의 수평 거리를 반환합니다.
+            // screenX : 사용자 스크린 화면 왼쪽 끝에서의 수평거리를 반환합니다.
             if (window.innerWidth / 2 < event.clientX) {
                 currAngle -= angle;
             } else {
