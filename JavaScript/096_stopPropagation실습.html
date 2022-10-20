@@ -65,6 +65,7 @@
         // nodelist로 쓰면 ie 지원안되는게 똑같기 때문에 다음과 같이 써줘야 한다. (forEach문 리팩토링)
         Array.prototype.forEach.call(txts, (item) => {
             item.addEventListener("click", () => {
+                console.log(event)
                 console.log(event.target)
                 alert(event.target.textContent.slice(0, -2)); // 맨뒤에서 -2까지 삭제
             })
@@ -76,7 +77,7 @@
                 const result = confirm("삭제 하시겠습니까?")
 
                 // 버블링 차단.
-                // event.stopPropagation();
+                event.stopPropagation();
                 if (result) {
                     item.parentElement.remove();
                 }

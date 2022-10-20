@@ -18,13 +18,13 @@
         // })
 
         // 실습 : 이벤트 타입 contextmenu를 이용해 브라우저 오른쪽 버튼 이벤트 막고 '해당 페이지에서는 오른쪽 클릭을 제한합니다.’ 경고 띄우기
-        document.addEventListener("contextmenu", e => {
+        // document.addEventListener("contextmenu", e => {
 
-            alert("해당 페이지에서는 오른쪽 클릭을 제한합니다.")
-            e.preventDefault()
-        })
-    </script> 
-
+        //     alert("해당 페이지에서는 오른쪽 클릭을 제한합니다.")
+        //     e.preventDefault()
+        // })
+    </script>
+    -->
     <form action="">
         <button type="submit" class="submit">제출</button>
     </form>
@@ -34,14 +34,14 @@
         submit.addEventListener('click', (event) => {
             console.log('clicked');
             event.preventDefault();
-            // event.stopPropagation();
+            event.stopPropagation();
         });
 
         // 버블링
         document.body.addEventListener('click', () => {
             console.log('event still alive!');
         });
-    </script>-->
+    </script>
 </body>
 
 </html>

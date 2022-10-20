@@ -31,9 +31,9 @@
         // })
         const parent = document.querySelector('.parent');
         parent.addEventListener('click', (event) => {
-
+            console.log(event.target)
             // 이벤트 리스너 안의 this 값은 currentTarget 과 같습니다.
-            console.log(this);
+            console.log(this); // 전역 객체 참조
             console.log(event.currentTarget);
 
             if (event.target.nodeName === "BUTTON") {
