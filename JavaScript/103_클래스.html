@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+</head>
+
+<body>
+    <script>
+        // function Robot(name) {
+        //     this.name = name;
+        // }
+
+        // Robot.prototype.sayYourName = function () {
+        //     console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+        // }
+
+
+        /* 클래스의 기본 모습 */
+        class Robot {
+            // 클래스의 생성자 함수입니다. 하나의 클래스는 하나의 생성자만 정의할 수 있습니다. 
+            // 그리고 생성자 함수는 new 키워드가 호출될때 자동으로 실행됩니다.
+            constructor(name) {
+                this.name = name;
+            }
+
+            // 메소드를 정의합니다. 메소드는 클래스가 생성한 인스턴스를 통해 사용할 수 있습니다.
+            sayYourName() {
+                console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+            }
+        }
+
+        /* 생성자 함수 */
+        function Jeongeum(name, address) {
+            this.name = name; // 생성자 안에서의 this는 인스턴스를 가리킨다. 생성자 함수를 실행할 때 전달 받은 name
+            this.address = address;
+        }
+
+        Jeongeum.prototype.eating = function () {
+            console.log('마라탕을 먹어요')
+        }
+
+        Jeongeum.prototype.meeting = function (myTeam) {
+            myTeam.intimacy();
+        }
+
+        let me10 = new Jeongeum('정음', '아산');
+        let me11 = new Jeongeum('ae정음', '천안');
+
+        function MyTeam(love) {
+            this.love = love;
+        }
+
+        MyTeam.prototype.intimacy = function () {
+            this.love++;
+        }
+
+        /* 생성자 함수를 클래스 문법으로 전환하기 */
+        class Jeongeum {
+            constructor(name, address) {
+                this.name = name;
+                this.address = address;
+            }
+
+            eating() {
+                console.log('마라탕을 먹어요');
+            }
+
+            meeting(myTeam) {
+                myTeam.intimacy();
+            }
+        }
+
+
+        class MyTeam {
+            constructor(love) {
+                this.love = love;
+            }
+
+            intimacy() {
+                this.love++;
+            }
+        }
+
+        const me = new Jeongeum('정음', '충남');
+        me // Jeongeum {name: '정음', address: '충남'}
+        const team = new MyTeam(1);
+        team // MyTeam {love: 1}
+        me.meeting(team);
+        team // MyTeam {love: 2}
+
+        ///////////////////////드림코딩엘리로 클래스, 오브젝트, 상속 복습하기////////////////////////////
+
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+
+                speak() {
+                    console.log(`${this.name}: hello!`)
+                }
+            }
+        }
+
+        const ellie = new Person('ellie', 20);
+        ellie.speak();
+
+        // Getter Setter
+        /*
+        클래스 : 커피 자판기
+        생성자 : 뽑을 커피 개수
+        메소드 : 동전 넣기, 커피 만들기
+
+        커피 개수를 -1로 설정하는게 맞을까? 
+        -> 제일 작은건 0이니까 안맞음. 그래서 게터 세터 쓰는거야!
+        사용자가 -1라고 설정해도 세터에서 0으로 만들어준다.
+
+        다른 사람이 커피 개수를 설정하는게 좋을까?
+        -> 자판기 커피 개수를 다른사람이 설정하는건 안좋음
+        그래서 private 로 설정 -> 캡슐화?
+        */
+
+        class User {
+            constructor(firstName, lastName, age) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+            }
+
+            get age() {
+                // 리턴
+                // 게터 정의하는 순간 this.age 를 정의할 때 게터를 호출함.
+                return this._age;
+            }
+
+            set age(value) {
+                // 셋팅
+                // 세터를 정의하는 순간 age를 할당할 때 메모리에 바로 할당하는 게 아니라 세터를 호출함. 
+                // 세터 안에서 전달된 벨류를 this.age에 할당할 때 메모리의 값을 업데이트 하는게 아니라 세터를 호출함.
+                // 계속 무한반복 됌.
+                // 방지하기 위해 게터 세터 안의 변수 이름을 바꿔줘야 함.
+                this._age = value < 0 ? 0 : value;
+            }
+        }
+
+        const user1 = new User('Steve', 'Job', -1); // 나이를 -1로 하는 것은 맞지 않음.
+        console.log(User1.age)
+
+
+        /* 상속 */
+        class Shape {
+            constructor(width, height, color) {
+                this.width = width;
+                this.height = height;
+                this.color = color;
+            }
+
+            draw() {
+                console.log(`drawing ${this.color} color!`);
+            }
+
+            getArea() {
+                return this.width * this.height;
+            }
+        }
+
+        class Rectangle extends Shape {}
+        class Triangle extends Shape {
+            draw() {
+                super.draw(); // 그럴 때에는 super를 사용해서 부모의 draw 함수를 호출 할 수 있음.
+                console.log('🔺'); // 더이상 Shape에 정의된 draw 함수가 호출되지 않음.
+            }
+            // 부모의 메서드를 그대로 가져와서 사용 : 오버라이딩
+            getArea() {
+                return (this.width * this.height) / 2;
+            }
+        }
+
+        const rectangle = new Rectangle(20, 20, 'blue');
+        const triangle = new Triangle(20, 20, 'red');
+
+        rectangle.draw();
+        triangle.getArea();
+
+
+        /* instanceOf */
+        // 왼쪽의 오브젝트가 오른쪽 클래스의 인스턴스인지 아닌지 즉, 오브젝트가 클래스를 통해 만들어졌는지 불리언 값으로 반환
+        console.log(rectangle instanceof Rectangle) // true
+        console.log(triangle instanceof Rectangle) // false
+        console.log(triangle instanceof Triangle) // true
+        console.log(triangle instanceof Shape) // true
+        console.log(triangle instanceof Object) // true
+    </script>
+</body>
+
+</html>
