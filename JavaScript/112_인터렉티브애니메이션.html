@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: tomato;
+            transition: .2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script>
+        // 기존에는 양쪽으로 움직일 때 딱-주르르륽 딱-주르르륵 이런식으로 부드럽지 못하게 움직이고 있다.
+
+        const box = document.querySelector(".box")
+        let pos = 0;
+
+        document.addEventListener("keydown", move);
+
+        function move(e) {
+            const keyName = e.key;
+
+            // console.log(keyName)
+            if (e.key === "ArrowRight") {
+                pos += 5;
+                box.style.transform = `translateX(${pos}px)`;
+            }
+            if (e.key === "ArrowLeft") {
+                pos -= 5;
+                box.style.transform = `translateX(${pos}px)`;
+            }
+        }
+    </script>
+</body>
+
+</html>

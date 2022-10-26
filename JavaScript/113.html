@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: tomato;
+            transition: .2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script>
+        // requestAnimationFrame 사용해서 애니메이션 최적화하기
+
+        const box = document.querySelector(".box");
+        let pos = 0;
+
+        // 사용자가 누르는 키의 상태를 저장하는 객체
+        let keys = {};
+
+        function move(event) {
+            keys[event.key] = true;
+            // console.log(keys.event.key) 
+        }
+
+        function stop(event) {
+            keys[event.key] = false;
+        }
+        document.addEventListener("keydown", move);
+        document.addEventListener("keyup", stop)
+
+        function play() {
+            if (keys.ArrowRight) {
+                pos += 2;
+                box.style.transform = `translateX(${pos}px)`;
+            }
+            if (keys.ArrowLeft) {
+                pos -= 2;
+                box.style.transform = `translateX(${pos}px)`;
+            }
+
+            window.requestAnimationFrame(play) // 셧다운 안되고 안정적으로 무한반복한다. 다른탭으로 가면 자동으로 멈췄다가 다시 브라우저로 돌아갔을 때 이어서 시작한다.
+            // 보통 게임에서는 무한재귀를 시킨다.
+        }
+
+        window.requestAnimationFrame(play)
+    </script>
+</body>
+
+</html>

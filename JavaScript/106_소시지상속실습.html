@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+</head>
+
+<body>
+    <script>
+        class MakeSausage {
+            constructor(재료1, 재료2) {
+                this.재료1 = 재료1;
+                this.재료2 = 재료2;
+            }
+            taste() {
+                console.log(`${this.재료1}와 ${this.재료2} 맛이 난다!`);
+            }
+        }
+
+        class FiresSausage extends MakeSausage {
+            constructor(재료1, 재료2, 재료3) {
+                super(재료1, 재료2);
+                this.재료3 = 재료3;
+            }
+            taste() {
+                console.log(`${this.재료1}와 ${this.재료2} 그리고 ${this.재료3}에 불맛 추가🔥`);
+            }
+        }
+
+        const mySausage = new FiresSausage('소고기', '파', '옥수수');
+        mySausage.taste();
+    </script>
+</body>
+
+</html>
