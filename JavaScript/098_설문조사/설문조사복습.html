@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문조사</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <form id="mainForm">
+        <fieldset>
+            <!-- legend : form 안의 내용을 정리해서 보여줄 수 있음. fieldset 안에서 첫번째 자식요소로 자리해야 한다. -->
+            <legend>JS 스터디 모집 설문조사</legend>
+            <progress max="100" value="0" class="bar-progress"></progress>
+            <p class="msg-notice">설문지를 작성해주세요!</p>
+
+            <label for="q1">질문1. 무엇을 가장 배우고 싶으세요?</label>
+            <input type="text" id="q1" required>
+            <label for="q2">질문2. 시간은 언제가 적당한가요?</label>
+            <input type="text" id="q2" required>
+            <label for="q3">질문3. 몇 시간정도 예상하세요?</label>
+            <input type="text" id="q3" required>
+            <label for="q4">질문4. 난이도를 조정한다면?</label>
+            <input type="text" id="q4" required>
+            <label for="q5">질문5. 끝으로 하고싶은 말이 있나요?</label>
+            <input type="text" id="q5" required>
+
+            <button type="submit">제출하기</button>
+            <button type="reset">초기화</button>
+        </fieldset>
+    </form>
+
+    <script>
+        const mainForm = document.querySelector("#mainForm");
+        const progressBar = mainForm.querySelector(".bar-progress");
+        const notice = mainForm.querySelector(".msg-notice");
+        const inputs = mainForm.querySelectorAll("input");
+        const btnSubmit = mainForm.querySelector("button[type='submit']");
+        const btnReset = mainForm.querySelector("button[type='reset']");
+
+        mainForm.addEventListener("keyup", () => {
+            console.log(`inputs: ${inputs}`)
+            // inputs는 Array가 아니라 NodeList이기 때문에 배열 메서드를 사용할 수 없다.
+            // 그래서 스프레드 연산자를 사용해 배열 내에 inputs의 값들을 복사한다.
+            const resultArr = [...inputs].filter(item => item.validity.valid === true);
+
+            console.log(resultArr)
+            switch (resultArr.length) {
+                case 1:
+                    notice.textContent = `계속 작성해주세요. ${resultArr.length}개 완료 했습니다!`;
+                    // progressBar.value += 10; // 이거는 왜 계속 늘어나는걸까?
+                    progressBar.setAttribute("value", 20);
+                    break;
+                case 2:
+                    notice.textContent = `잘 작성해주고 계시는군요! ${resultArr.length}개 남았습니다`;
+                    progressBar.setAttribute("value", 40);
+                    break;
+                case 3:
+                    notice.textContent = `조금만 더 힘내서 작성해주세요🔥 ${resultArr.length}개 남았습니다`;
+                    progressBar.setAttribute("value", 60);
+                    break;
+                case 4:
+                    notice.textContent = `거의 다하셨어요! ${resultArr.length}개 남았습니다`;
+                    progressBar.setAttribute("value", 80);
+                    break;
+                case 5:
+                    notice.textContent = `모두 작성했습니다. 제출해주세요!`;
+                    progressBar.setAttribute("value", 100);
+                    break;
+            }
+        })
+
+        btnReset.addEventListener("click", () => {
+            progressBar.value = 0;
+            console.log("바 초기화, 공지 초기화")
+        })
+
+        btnSubmit.addEventListener("click", (e) => {
+            if (resultArr.length === 0) {
+                alert("❌설문 참여 후 제출해주세요!❌");
+                e.preventDefault();
+            }
+            alert("제출해주셔서 감사합니다😊")
+        })
+    </script>
+</body>
+
+</html>
