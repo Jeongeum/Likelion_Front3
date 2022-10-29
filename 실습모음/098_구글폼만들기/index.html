@@ -46,7 +46,58 @@
             </div>
         </fieldset>
     </form>
+    <script>
+        const mainForm = document.querySelector("#mainForm");
+        const progressBar = mainForm.querySelector(".bar-progress");
+        const notice = mainForm.querySelector(".notice");
+        const inputs = mainForm.querySelectorAll("input");
+        const btnSubmit = mainForm.querySelector("button[type='submit']");
+        const btnReset = mainForm.querySelector("button[type='reset']");
 
+        // console.log(inputs) // input을 label 안으로 넣으니까 value 가 없는데도 valid가 true로 나오네
+        mainForm.addEventListener("keyup", () => {
+
+            const result = [...inputs].filter(item => {
+                return item.validity.valid;
+            })
+
+            switch (result.length) {
+                case 1:
+                    notice.textContent = `계속 작성해주세요. ${result.length}개 완료 했습니다!`;
+                    // progressBar.value += 10; // 이거는 왜 계속 늘어나는걸까?
+                    progressBar.setAttribute("value", 20);
+                    break;
+                case 2:
+                    notice.textContent = `잘 작성해주고 계시는군요! ${result.length}개 남았습니다`;
+                    progressBar.setAttribute("value", 40);
+                    break;
+                case 3:
+                    notice.textContent = `조금만 더 힘내서 작성해주세요🔥 ${result.length}개 남았습니다`;
+                    progressBar.setAttribute("value", 60);
+                    break;
+                case 4:
+                    notice.textContent = `거의 다하셨어요! ${result.length}개 남았습니다`;
+                    progressBar.setAttribute("value", 80);
+                    break;
+                case 5:
+                    notice.textContent = `모두 작성했습니다. 제출해주세요!`;
+                    progressBar.setAttribute("value", 100);
+                    break;
+            }
+        })
+
+        btnSubmit.addEventListener("click", () => {
+            let result = confirm("잘 작성하셨나요? 제출하시겠어요?🤓")
+
+            if (result) {
+                alert("제출되었습니다. 참여해주셔서 감사합니다!");
+            }
+        })
+
+        btnReset.addEventListener("click", () => {
+            let result = confirm("양식을 지우시겠습니까?");
+        })
+    </script>
 
 </body>
 
