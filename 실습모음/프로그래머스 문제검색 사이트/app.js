@@ -22,31 +22,30 @@ async function getData() {
       );
       const { result } = await page.json();
       problemList.push(...result);
-
-      problemList.forEach((problem) => {
-        view.append(problemDraw(problem));
-      });
-      problemArr = [...problemList];
     }
+
+    problemList.forEach((problem) => {
+      ul.append(problemDraw(problem));
+    });
+
+    problemArr = [...problemList];
+    view.append(ul);
   } catch (e) {
     console.log(e);
   }
 }
 
 function problemDraw(problem) {
-  const problemLink = document.createElement("a");
-  problemLink.href = `https://school.programmers.co.kr/learn/courses/30/lessons/${problem.id}`;
-  problemLink.innerHTML = `
-        <li class="problemItem">
-                    <div>
+  const problemLi = document.createElement("li");
+  problemLi.classList.add("problemItem");
+  problemLi.innerHTML = `
+                    <a href="https://school.programmers.co.kr/learn/courses/30/lessons/${problem.id}">
                         <h2 class="problemTitle">${problem.title}</h2>
                         <p class="partTitle">${problem.partTitle}</p>
-                    </div>
+                    </a>
                     <span class="level">Lv.${problem.level}</span>
-                </li>`;
-  ul.append(problemLink);
-  return ul;
-  // console.log(problem);
+                    `;
+  return problemLi;
 }
 
 // getData().then((problemList) => {
@@ -68,17 +67,19 @@ function problemDraw(problem) {
 
 function searchProblem(e) {
   e.preventDefault();
-  const searchValue = input.value;
-  const searchItem = problemArr.filter(
-    (problem) => problem.title === searchValue
+  // const fragment = new DocumentFragment();  하위트리 조립 후, dom에 트리를 삽입하도록 도와준다.
+  const searchValue = new RegExp(input.value); //
+  const searchItem = problemArr.filter((problem) =>
+    searchValue.test(problem.title)
   );
 
-  searchItem.forEach((problem) => {
-    view.innerHTML = "";
-    view.append(problemDraw(problem));
-    console.log(problem);
+  /* 기존에 띄워준 ul을 초기화하고 검색한 값을 화면에 띄운다. */
+  ul.innerHTML = "";
+  searchItem.forEach((searchProblem) => {
+    ul.append(problemDraw(searchProblem));
   });
-  input.value = "";
+  view.innerHTML = "";
+  view.appendChild(ul);
 }
 
 form.addEventListener("submit", searchProblem);
