@@ -118,6 +118,18 @@ console.log(`abc
 /*
 여러줄 주석입니다.
 */
+
+/**
+ * a와 b를 더함
+ *
+ * @author: jun
+ * @param {number} a 더할 숫자
+ * @param {number} b 더할 숫자
+ * @return {number} a + b를 반환함
+ */
+function add(a, b) {
+  return a + b;
+}
 ```
 
 5. 엄격모드
@@ -188,13 +200,14 @@ console.log(`abc
 
 - 산술 연산자(+, -, /, \*, \*\*, %)
 - (복합) 할당 연산자(=, +=, -=, /=, \*=, \*\*=, %=)
-- 논리 연산자(&&, ||, !, !!, &, |)
+- 논리 연산자(&&, ||, !, !!, &, |, ~)
 
   - 참 -> true -> 1
   - 거짓 -> false -> 0
   - &&는 곱
   - ||는 합
   - !는 부정
+  - !!는 true와 false를 반환하게 해주는 코드
   - 암기코드
 
   ```js
@@ -237,11 +250,25 @@ console.log(`abc
     console.log("01" == 1); // true
     ```
   - null과 undefined 비교하기
+    - 산술 연산자나 기타 비교 연산자를 사용하면(==, === 제외) null과 undefined는 숫자형으로 변환
+    - null은 0
+    - undefined는 NaN
     ```js
     console.log(null == undefined); // true
     console.log(null === undefined); // false
     ```
   - 에지 케이스(edge case)
+
+    ```js
+    console.log(null > 0); // f(null이 0으로 변환)
+    console.log(null == 0); // f(null이 0으로 변환되지 않음)
+    console.log(null >= 0); // t(null이 0으로 변환)
+    // >= 연산을 할 때에 null이 0으로 변환이 되어 위와 같은 일을 만듬
+
+    console.log(undefined > 0); // f (undefined가 NaN으로 변환, NaN은 뒤도 돌아보지 않고 비교를 하면 false)
+    console.log(undefined < 0); // f (undefined가 NaN으로 변환, NaN은 뒤도 돌아보지 않고 비교를 하면 false)
+    console.log(undefined == 0); // f(undefined와 null이 같고, 그 외에 값은 false)
+    ```
 
 - 단항 산술 연산자(++x, x++, --x, x--)
 - nullish 병합 연산자(??)
@@ -256,6 +283,17 @@ console.log(`abc
 
   let result5 = null;
   let result6 = result5 ?? 100;
+
+  username = "hojun";
+  result5 = username ?? "유저 이름이 없습니다";
+
+  username = undefined;
+  result5 = username ?? "유저 이름이 없습니다";
+
+  let x = 0;
+
+  console.log(x || 10); // 10 (x가 0이니 false로 판단)
+  console.log(x ?? 10); // 0 (x라는 값이 있다고 판단)
   ```
 
 - typeof 연산자
@@ -406,6 +444,22 @@ console.log(`abc
 
 - Object(객체)
 
+  - 생성하는 방법
+
+  ```js
+  let data = new Object(); // '객체 생성자'
+  let data = {}; // '객체 리터럴'
+
+  let human = {
+    name: "hojun",
+    age: 10,
+  };
+  human.name;
+  human["name"];
+  // delete human.age; // 권하지 않습니다.
+  // human.age = null // 권합니다.
+  ```
+
   - 형태 :
     ```js
     {
@@ -546,6 +600,32 @@ console.log(`abc
 - else if
 - else
 - switch
+
+  ```js
+  // 한 줄로 사용하는 경우도 종종 있습니다.
+  if (true) console.log("hello world");
+  ```
+
+  ```js
+  // if문 안에서 선언된 변수(let, const)는 밖에서 읽을 수 없습니다.
+  if (true) {
+    let x = 10;
+    console.log(x);
+  }
+  console.log(x);
+  ```
+
+  ```js
+  if (1) console.log("1");
+  if ("") console.log("공백없음");
+  if (" ") console.log("공백");
+  if ("hello") console.log("hello");
+  if (NaN) console.log("NaN");
+  if (null) console.log("null");
+  if ([]) console.log("[]"); // 주의
+  if ({}) console.log("{}"); // 주의
+  ```
+
   ```js
   if (false) {
     console.log("hello 1");
@@ -560,6 +640,7 @@ console.log(`abc
     console.log("hello 4");
   }
   ```
+
   ```js
   if (false) {
     console.log("hello 1");
@@ -573,8 +654,57 @@ console.log(`abc
     console.log("!!");
   }
   ```
+
   ```js
+  // condition ? value1 : value2;
   let result = true ? 1 : 100;
+  ```
+
+  - 문제 : 다음 if문을 3항 연산자로 만들어보세요.
+
+  ```js
+  // 문제1
+  let money = 500;
+  if (money < 1300) {
+    console.log("버스를 탈 수 없습니다.");
+  } else {
+    console.log("버스를 탔습니다.");
+  }
+  // let money = 500
+  // money < 1300 ? console.log('버스를 탈 수 없습니다.') : console.log('버스를 탔습니다.')
+
+  // 문제2
+  let money = 500;
+  if (money < 1300) {
+    money += 1000;
+  } else if (money < 2000) {
+    money += 500;
+  } else {
+    money += 100;
+  }
+  //let money = 500
+  //money < 1300 ? money += 1000 : (money < 2000 ? money += 500 : money += 100)
+
+  //let money = 500
+  //money < 1300 ? money += 1000 : money < 2000 ? money += 500 : money += 100
+  ```
+
+  ```js
+  // switch 문을 사용하실 때에는 type확인을 하세요!
+  switch (2) {
+    case 1:
+      console.log(100);
+      break;
+    case 2:
+      console.log(200);
+      break;
+    case 3:
+      console.log(300);
+      break;
+    default:
+      console.log("값이 없음");
+      break;
+  }
   ```
 
 ## 반복문
@@ -622,6 +752,46 @@ while (x < 10) {
   console.log(x);
   x++;
 }
+
+let x = 0;
+while (x < 10) {
+  console.log(x);
+  x += 2;
+}
+
+let x = 0;
+while (true) {
+  console.log(x);
+  x += 2;
+  if (x >= 10) {
+    break;
+  }
+}
+
+while (true) {
+  value = prompt("명령을 입력하세요.");
+  console.log(value);
+  if (value === "break") {
+    break;
+  }
+}
+
+let value = ~~(Math.random() * 100);
+console.log(value);
+while (true) {
+  input = prompt("명령을 입력하세요.");
+  console.log(input);
+  if (value === parseInt(input)) {
+    break;
+  } else if (value > parseInt(input)) {
+    console.log("UP!!");
+  } else if (value < parseInt(input)) {
+    console.log("DOWN!!");
+  }
+}
+
+let i = 10;
+while (i) console.log(i--);
 ```
 
 ```js
@@ -640,6 +810,11 @@ a.forEach((e) => console.log(e ** 2));
 ```
 
 ```js
+// 문법
+// for (초깃값; 조건; 증감식) {
+//   // 구문
+// }
+
 //예제
 for (let i = 0; i < 10; i++) {
   if (i == 5) {
@@ -647,30 +822,80 @@ for (let i = 0; i < 10; i++) {
   }
   console.log(i);
 }
-```
 
-```js
-//예제
 for (let i = 0; i < 10; i++) {
   if (i == 5) break;
   console.log(i);
 }
-```
 
-```js
-//예제
-for (let i = 0; i < 10; i++) {
-  if (i == 5) break;
-  console.log(i);
-}
-```
-
-```js
-//예제
 for (let i = 0; i < 10; i++) {
   if (i == 5) continue;
   console.log(i);
 }
+
+// 여러가지 테스트 문법
+for (let i = 10; i > 0; i--) {
+  console.log(i);
+}
+
+let k = 1;
+for (; k < 10; k++) {
+  console.log(k);
+}
+
+let k = 1;
+for (; k < 10; ) {
+  console.log(k);
+  k += 2;
+}
+
+for (;;) {
+  value = prompt("명령을 입력하세요.");
+  console.log(value);
+  if (value === "break") {
+    break;
+  }
+}
+
+for (let test = ["a", "b", "c", "d"]; test.length >= 1; test.pop()) {
+  console.log(test);
+}
+
+for (let test = ["a", "b", "c", "d"]; test.length >= 0; test.pop()) {
+  console.log(test);
+}
+
+for (let i = 2; i < 10; i++) {
+  for (let j = 1; j < 10; j++) {
+    console.log(`${i} X ${j} = ${i * j}`);
+  }
+}
+console.log("end");
+
+for (let i = 2; i < 10; i++) {
+  for (let j = 1; j < 10; j++) {
+    if (i == 5) break;
+    console.log(`${i} X ${j} = ${i * j}`);
+  }
+}
+console.log("end");
+
+outer: for (let i = 2; i < 10; i++) {
+  for (let j = 1; j < 10; j++) {
+    console.log(`${i} X ${j} = ${i * j}`);
+    if (i == 5) break outer;
+  }
+}
+console.log("end");
+
+for (let i = 2; i < 10; i++) {
+  for (let j = 1; j < 10; j++) {
+    if (i == 5) break;
+    console.log(`${i} X ${j} = ${i * j}`);
+  }
+  if (i == 5) break;
+}
+console.log("end");
 ```
 
 # 함수와 클래스
@@ -678,10 +903,27 @@ for (let i = 0; i < 10; i++) {
 ## 함수
 
 - 함수 표현식과 함수 선언식
+
   ```js
   let 함수표현식 = function () {}; // 호이스팅 X
   function 함수선언식() {} // 호이스팅 O
+
+  sum(10, 20);
+  function sum(x, y) {
+    return x + y;
+  }
+
+  sum(10, 20);
+  let sum = function (x, y) {
+    return x + y;
+  };
+
+  sum(10, 20);
+  let sum = (x, y) => {
+    return x + y;
+  };
   ```
+
 - 함수(파선아실)
 
   - 여기서 x, y를 보통 한국에서는 인자
@@ -779,6 +1021,15 @@ for (let i = 0; i < 10; i++) {
   // 함수표현식, 호이스팅 X
   let 제곱 = (x) => x ** 2;
 
+  // 인자가 1개일 때에는 괄호 X
+  let 제곱 = (x) => x ** 2;
+
+  // 본문이 있는 경우 중괄호
+  let 제곱 = (x) => {
+    console.log(x);
+    return x ** 2;
+  };
+
   function f(a, b) {
     let z = 10;
     let result = z + a + b;
@@ -810,10 +1061,25 @@ for (let i = 0; i < 10; i++) {
   ```
 
 - 익명 함수
+
   ```js
   console.dir(function (x, y) {
     return x + y;
   });
+  ```
+
+- return
+  ```js
+  function hello() {
+    console.log("hello");
+    console.log("hello");
+    console.log("hello");
+    return;
+    console.log("hello");
+    console.log("hello");
+    console.log("hello");
+  }
+  hello();
   ```
 
 ## 클래스
@@ -1099,7 +1365,7 @@ let p = new Promise(function (resolve, reject) {
   });
 
 p;
-//Promise {<fulfilled>: undefined}
+//Promise {<fulfilled>: undefined}
 
 let p = new Promise(function (resolve, reject) {
   // resolve('hello world');
@@ -1166,30 +1432,30 @@ let p = new Promise(function (resolve, reject) {
 console.log("hello world");
 console.log(p);
 //VM92:4 hello world
-//VM92:5 Promise {<pending>}
+//VM92:5 Promise {<pending>}
 
 // 3초 후
 console.log(p);
-//</pending>/VM139:1 Promise {<fulfilled>: '끝남!'}
+//</pending>/VM139:1 Promise {<fulfilled>: '끝남!'}
 
 let p = new Promise(function (resolve, reject) {
   setTimeout(() => resolve("끝남!"), 10000);
 });
 console.log("hello world");
 console.log(p);
-//VM180:1 Promise {<pending>}
+//VM180:1 Promise {<pending>}
 
 console.log(p);
-// VM184:1 Promise {<pending>}
+// VM184:1 Promise {<pending>}
 
 console.log(p);
-// VM184:1 Promise {<pending>}
+// VM184:1 Promise {<pending>}
 
 console.log(p);
-// VM184:1 Promise {<pending>}
+// VM184:1 Promise {<pending>}
 
 console.log(p);
-//VM204:1 Promise {<fulfilled>: '끝남!'}
+//VM204:1 Promise {<fulfilled>: '끝남!'}
 
 // 실행하지 마세요. pending에 빠집니다.
 //let p = new Promise(function(resolve, reject) {
@@ -1205,13 +1471,13 @@ snack;
 // 		return "cake!";
 // }
 snack();
-//Promise {<fulfilled>: 'cake!'}
+//Promise {<fulfilled>: 'cake!'}
 
 const f = fetch(
   "https://raw.githubusercontent.com/paullabkorea/coronaVaccinationStatus/main/data/data.json"
 );
 f;
-//Promise {<fulfilled>: Response}
+//Promise {<fulfilled>: Response}
 const f = fetch(
   "https://raw.githubusercontent.com/paullabkorea/coronaVaccinationStatus/main/data/data.json"
 )
@@ -1229,7 +1495,7 @@ const f = fetch(
   .then((d) => d.json())
   .then((d) => console.log(d));
 
-//VM458:7 (18) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]0: {시·도별(1): '전국', 총인구 (명): 52980961, 1차 접종 누계: 15199919, 2차 접종 누계: 4521785, 1차 접종 퍼센트: 28.6893984426, …}1: {시·도별(1): '서울', 총인구 (명): 9911088, 1차 접종 누계: 2811191, 2차 접종 누계: 835878, ...중략...
+//VM458:7 (18) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]0: {시·도별(1): '전국', 총인구 (명): 52980961, 1차 접종 누계: 15199919, 2차 접종 누계: 4521785, 1차 접종 퍼센트: 28.6893984426, …}1: {시·도별(1): '서울', 총인구 (명): 9911088, 1차 접종 누계: 2811191, 2차 접종 누계: 835878, ...중략...
 
 /////////
 // 동기처리 //
@@ -1372,18 +1638,38 @@ async function printImg() {
 }
 printImg();
 
-fetch("http://35.76.53.28:8080/mall")
+fetch("http://test.api.weniv.co.kr/mall")
+  .then((data) => data.json())
+  .then((data) => console.log(data));
+
+fetch("http://test.api.weniv.co.kr/mall")
   .then(function (response) {
-    console.log(1);
     return response.json();
   })
   .then((json) => {
-    const imgURL = "http://35.76.53.28:8080/" + json[0]["thumbnailImg"];
+    const imgURL = "http://test.api.weniv.co.kr/" + json[0]["thumbnailImg"];
     console.log(imgURL);
     const img2 = document.createElement("img");
-    //html body에 위에서 만든 img 태그를 삽입한다.
     document.body.append(img2);
     img2.src = imgURL;
+  });
+
+fetch("http://test.api.weniv.co.kr/mall")
+  .then(function (response) {
+    return response.json();
+  })
+  .then((json) => {
+    json.forEach((item) => {
+      const imgElement = document.createElement("img");
+      const h1Element = document.createElement("h1");
+
+      const imgURL = "http://test.api.weniv.co.kr/" + item["thumbnailImg"];
+      imgElement.src = imgURL;
+      h1Element.innerText = item["productName"];
+
+      document.body.append(h1Element);
+      document.body.append(imgElement);
+    });
   });
 
 /*
@@ -1428,27 +1714,27 @@ document.getElementsByTagName();
 document.getElementsByClassName();
 
 // css 선택자로 단일 요소에 접근하기
-document.querySelector("selector");
+document.querySelector("selector"); // 많이 사용 V
 
 // css 선택자로 여러 요소에 접근하기
-document.querySelectorAll("selector");
+document.querySelectorAll("selector"); // 많이 사용 V
 
 // target 요소를 생성합니다.
-document.createElement(target);
+document.createElement(target); // 많이 사용 V
 
 // target 텍스트를 생성합니다.
 document.createTextNode(target);
 
 // target 요소를 element의 자식으로 위치합니다.
-element.appendChild(target);
+element.appendChild(target); // 많이 사용 V
 
 // element의 target 자식 요소를 제거합니다.
-element.removeChild(target);
+element.removeChild(target); // 많이 사용 V
+
+// parentElement.insertBefore(target, location); target요소를 parentElement의 자식인 location 위치 앞으로 이동합니다.
 ```
 
 ```js
-// parentElement.insertBefore(target, location); target요소를 parentElement의 자식인 location 위치 앞으로 이동합니다.
-
 var span = document.createElement("span");
 var sibling = document.getElementById("childElement");
 var parentDiv = document.getElementById("parentElement");
@@ -1469,4 +1755,50 @@ console.log(cont.parentElement); // 부모 요소를 찾습니다.
 
 // 브라우저의 기본 이벤트 동작을 취소
 event.preventDefault();
+```
+
+```js
+// 1
+제목 = document.createElement("h1");
+제목.innerText = "hello world";
+document.body.append(제목);
+
+// 2
+for (let i = 0; i < 10; i++) {
+  내용 = document.createElement("p");
+  내용.innerText = "hello world";
+  document.body.append(내용);
+}
+
+// 3
+컨테이너 = document.createElement("div");
+컨테이너.classList.add("one");
+컨테이너.classList.add("two");
+// 컨테이너.classList.add('three four')
+컨테이너.classList.remove("one");
+for (let i = 0; i < 10; i++) {
+  내용 = document.createElement("p");
+  내용.innerText = "hello world";
+  컨테이너.append(내용);
+}
+document.body.append(컨테이너);
+
+// 콘솔창에서 실행
+컨테이너.classList;
+// DOMTokenList(2) ['one', 'two', value: 'one two']
+컨테이너.classList.remove("two");
+
+컨테이너.classList.toggle("four");
+// true
+컨테이너.classList.toggle("four");
+// false
+
+// 직접 attribute를 컨트롤
+컨테이너.getAttribute("class");
+// 'one four'
+컨테이너.hasAttribute("class");
+// true
+
+// 기존에 있었던 class는 날아갑니다.
+컨테이너.setAttribute("class", "five six");
 ```
