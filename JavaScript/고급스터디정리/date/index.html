@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+</head>
+
+<body>
+    <script>
+        const time = new Date();
+
+        console.log(time);
+        // GMT : 그리니치 표준시 -> GMT+9 하면 한국시간 기준
+        console.log(time.getFullYear()); // 이걸 사용하길 권장
+        console.log(time.getYear());
+        console.log(time.getMonth());
+        console.log(time.getDate());
+        console.log(time.getDay());
+        console.log(time.getHours());
+        console.log(time.getMinutes());
+        console.log(time.getSeconds());
+
+        // UTC : 협정 세계시 -> 영국을 기준으로 함. (우리랑 9시간 차이)
+        // 전세계 대상 서비스할 때 사용
+        console.log(time.getUTCFullYear());
+        console.log(time.getUTCMonth());
+        console.log(time.getUTCDate());
+        console.log(time.getUTCDay());
+
+        // 오후 12시가 넘어가면 (13시 = 1시)
+        const hour = time.getHours() > 12 ? time.getHours() - 12 : time.getHours();
+        const 오전오후 = time.getHours() > 12 ? "오후" : "오전";
+        const minutes = time.getMinutes() > 10 ? time.getMinutes() : '0' + time.getMinutes();
+
+        const now = `지금은 ${오전오후} ${hour}시 ${minutes}분입니다.`;
+        console.log(now);
+    </script>
+</body>
+
+</html>
