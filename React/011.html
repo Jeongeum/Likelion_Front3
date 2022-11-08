@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>리액트 1분만에 추가해보기!</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        function 자기소개(props){
+                return (
+                    <div>
+                        <p>제 이름은 {props.name}입니다.</p>
+                        <p>제 나이는 {props.age}입니다.</p>
+                        <p>제 통장은 {props.money}입니다.</p>
+                        <p>저희 집은 {props.house}입니다.</p>
+                        <p>커피는 {props.coffee}입니다.</p>
+                    </div>
+                )
+            }
+
+            function 자기소개2(정음){
+                return (
+                    <div>
+                        <p>제 이름은 {정음.name}입니다.</p>
+                        <p>제 나이는 {정음.age}입니다.</p>
+                        <p>제 통장은 {정음.money}입니다.</p>
+                        <p>저희 집은 {정음.house}입니다.</p>
+                        <p>커피는 {정음.coffee}입니다.</p>
+                    </div>
+                )
+            }
+
+            function 자기소개3({name, age, money, house, coffee}){
+                return (
+                    <div>
+                        <p>제 이름은 {name}입니다.</p>
+                        <p>제 나이는 {age}입니다.</p>
+                        <p>제 통장은 {money}입니다.</p>
+                        <p>저희 집은 {house}입니다.</p>
+                        <p>커피는 {coffee}입니다.</p>
+                    </div>
+                )
+            }
+
+            const app = (
+                <main>
+                    <자기소개 
+                    name="jeongeum"
+                    age="24"
+                    money="10000"
+                    house="null"
+                    coffee="full"
+                    />
+                    {자기소개({
+                        name: "jeongeum",
+                        age: "24",
+                        money: "10000",
+                        house: "null",
+                        coffee: "full"
+                    })}
+                    <자기소개 
+                    name="jeongeum"
+                    age="24"
+                    money={1000}
+                    house="null"
+                    coffee="full"
+                    />
+                    <자기소개2 
+                    name="jeongeum2"
+                    age="24"
+                    money="100002"
+                    house="null2"
+                    coffee="full2"
+                    />
+                    <자기소개3 
+                    name="jeongeum3"
+                    age="24"
+                    money="100003"
+                    house="null3"
+                    coffee="full3"
+                    />
+                </main>
+            );
+
+            const domContainer = document.querySelector("#root");
+            ReactDOM.render(app, domContainer);
+        </script>
+</body>
+
+</html>
