@@ -3,6 +3,7 @@ const input = document.querySelector("input");
 const btn = document.querySelector(".searchBtn");
 const view = document.querySelector(".view");
 const ul = document.querySelector(".problemList");
+const levelBtn = document.querySelectorAll(".lvBtn");
 
 // 검색 시 찾을 problem 배열
 let problemArr = [];
@@ -35,6 +36,21 @@ async function getData() {
   }
 }
 
+// 레벨 별로 문제 보여주기
+levelBtn.forEach((BtnItem) => {
+  BtnItem.addEventListener("click", () => {
+    const levelProblem = problemArr.filter(
+      (problem) => Number(BtnItem.id) === problem.level
+    );
+    ul.innerHTML = "";
+    levelProblem.forEach((levelProblem) => {
+      ul.append(problemDraw(levelProblem));
+    });
+    view.appendChild(ul);
+  });
+});
+
+// 문제 화면에 띄우기
 function problemDraw(problem) {
   const problemLi = document.createElement("li");
   problemLi.classList.add("problemItem");
@@ -48,27 +64,11 @@ function problemDraw(problem) {
   return problemLi;
 }
 
-// getData().then((problemList) => {
-//   problemList.forEach((problem) => {
-//     const problemLink = document.createElement("a");
-//     problemLink.href = `https://school.programmers.co.kr/learn/courses/30/lessons/${problem.id}`;
-//     problemLink.innerHTML = `
-//     <li class="problemItem">
-//                 <div>
-//                     <h2 class="problemTitle">${problem.title}</h2>
-//                     <p class="partTitle">${problem.partTitle}</p>
-//                 </div>
-//                 <span class="level">Lv.${problem.level}</span>
-//             </li>`;
-//     ul.append(problemLink);
-//     // console.log(problem);
-//   });
-// });
-
+// 검색 함수
 function searchProblem(e) {
   e.preventDefault();
   // const fragment = new DocumentFragment();  하위트리 조립 후, dom에 트리를 삽입하도록 도와준다.
-  const searchValue = new RegExp(input.value); //
+  const searchValue = new RegExp(input.value);
   const searchItem = problemArr.filter((problem) =>
     searchValue.test(problem.title)
   );
@@ -78,7 +78,6 @@ function searchProblem(e) {
   searchItem.forEach((searchProblem) => {
     ul.append(problemDraw(searchProblem));
   });
-  view.innerHTML = "";
   view.appendChild(ul);
 }
 
