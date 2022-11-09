@@ -1,0 +1,9 @@
+total 16
+drwxr-xr-x   8 jeongeum  staff  256 11  9 13:46 .
+drwxr-xr-x  18 jeongeum  staff  576 11  9 13:22 ..
+-rw-r--r--   1 jeongeum  staff    0 11  9 13:23 001.html
+-rw-r--r--   1 jeongeum  staff    0 11  9 13:23 002.html
+-rw-r--r--   1 jeongeum  staff    0 11  9 13:23 003.txt
+-rw-r--r--   1 jeongeum  staff    0 11  9 13:46 result.txt
+-rw-r--r--   1 jeongeum  staff   12 11  9 13:41 test.txt
+-rw-r--r--   1 jeongeum  staff   12 11  9 13:44 test2.txt
