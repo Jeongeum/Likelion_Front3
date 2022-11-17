@@ -54,8 +54,8 @@ const CardTwo = (props) => {
 function App() {
   return (
     <>
-      <CardOne />
-      <CardTwo />
+      <CardOne/>
+      <CardTwo/>
     </>
   );
 }
