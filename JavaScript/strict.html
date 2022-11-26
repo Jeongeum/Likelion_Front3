@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+</head>
+
+<body>
+    <script>
+        // 'use strict'
+        // str = "hello strict"
+
+        // 선언되지 않은 변수들은 항상 전역변수
+        // strict 모드에서는 ReferenceError 출력
+
+        // var undefined = 5;
+        // var Infinity = 5;
+        // var 키워드로 사용하면 예약어도 일부 변수명으로 사용할 수 있게 된다.
+        // strict 모드에서는 TypeError 발생
+
+        Math.PI = 0;
+
+        const employee = {
+            firstname: 'Jhon',
+            lastname: 'Doe'
+        }
+
+        console.log(employee.firstname)
+
+        delete employee.firstname;
+
+        console.log(employee.firstname) // 객체의 속성을 지울 수 있다.
+
+        delete Object.prototype; // 네이티브로 구현된 객체의 프로토타입을 삭제
+        // strict 모드에서는 삭제가 안된다고 나옴.
+
+        function myFunc(a, a, b) {
+            console.log(a + a + b);
+        }
+
+        myFunc(1, 2, 3); // a가 2로 다 바뀐다.
+    </script>
+</body>
+
+</html>
