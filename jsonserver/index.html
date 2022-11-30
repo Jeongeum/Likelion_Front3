@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>제코베 스토어 관리자 페이지 CRUD</title>
+
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -118,29 +122,29 @@
 
 
         //update
-        // const btnUpdate = document.querySelectorAll(".btn-update");
+        const btnUpdate = document.querySelectorAll(".btn-update");
 
-        // btnUpdate.forEach(itemUpdate => {
-        //     itemUpdate.addEventListener("click", (event) => {
-        //         console.log(itemUpdate)
-        //         // console.log("눌렀다.");
-        //         const productInfo = {
-        //             productName: document.querySelector("#inp-name").value,
-        //             price: document.querySelector("#inp-price").value,
-        //             stockCount: document.querySelector("#inp-stock").value,
-        //             viewCount: 0,
-        //             pubDate: document.querySelector("#inp-date").value,
-        //             modDate: document.querySelector("#inp-date").value,
-        //         };
-        //         fetch(`http://localhost:3001/product/${exData.id}`, {
-        //             method: "PUT",
-        //             headers: {
-        //                 "Content-Type": "application/json"
-        //             },
-        //             body: JSON.stringify(productInfo),
-        //         })
-        //     });
-        // })
+        btnUpdate.forEach(itemUpdate => {
+            itemUpdate.addEventListener("click", (event) => {
+                console.log(itemUpdate)
+                // console.log("눌렀다.");
+                const productInfo = {
+                    productName: document.querySelector("#inp-name").value,
+                    price: document.querySelector("#inp-price").value,
+                    stockCount: document.querySelector("#inp-stock").value,
+                    viewCount: 0,
+                    pubDate: document.querySelector("#inp-date").value,
+                    modDate: document.querySelector("#inp-date").value,
+                };
+                fetch(`http://localhost:3001/product/${exData.id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(productInfo),
+                })
+            });
+        })
 
 
         //delete
