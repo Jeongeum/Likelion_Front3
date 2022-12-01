@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documents</title>
+
+    <style>
+      form {
+        margin: 0 auto;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 실습
+사용자가 입력한 비밀번호를 벨리데이션하는 폼을 만들어 봅시다.
+input은 비밀번호, 비밀번호 확인 두 가지가 있어야하며
+이때 만약 
+1. input에 아무것도 입력하지 않았거나
+2. 비밀번호 input과 비밀번호 확인 input의 값이 동일하지 않거나,
+3. 비밀번호의 패턴이 정규표현식과 일치하지 않은 경우
+
+에러메시지를 출력하도록 만들어보세요
+  -->
+
+    <!-- 
+  - native로 태그에 pattern을 쓰는게 script에서 처리해주는 것보다 빠르다.
+  - 확인 input에서는 위의 input과 같은지만 확인하면 되기 때문에 pattern을 안써주었다. 
+  -->
+    <form action="">
+      <label for="pw">비밀번호 : </label>
+      <input
+        type="password"
+        id="pw"
+        required
+        pattern="(?=.*[!@#$%^&*()_+=-])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}"
+      />
+      <label for="pwValid">비밀번호 확인 : </label>
+      <input type="password" id="pwValid" required />
+
+      <button>제출</button>
+    </form>
+
+    <script>
+      const pw = document.querySelector("#pw");
+      const inps = document.querySelectorAll("input");
+      const btnSubmit = document.querySelector("button");
+      btnSubmit.addEventListener("click", () => {
+        inps.forEach((item) => {
+          validate(item);
+        });
+      });
+
+      // 1. input에 아무것도 입력하지 않았거나
+      // 2. 비밀번호 input과 비밀번호 확인 input의 값이 동일하지 않거나,
+      // 3. 비밀번호의 패턴이 정규표현식과 일치하지 않은 경우
+      function validate(target) {
+        if (target.validity.valueMissing) {
+          target.setCustomValidity("값을 입력해주세요!");
+        } else if (target.id === "pwValid") {
+          if (target.value !== pw.value) {
+            target.setCustomValidity(
+              "비밀번호가 맞지 않습니다. 동일하게 입력해주세요"
+            );
+          } else {
+            target.setCustomValidity("");
+          }
+        } else if (target.validity.patternMismatch) {
+          target.setCustomValidity(
+            "대문자나 특수기호를 하나 이상 포함하는 비밀번호를 8글자 이상 넣어주세요."
+          );
+        } else {
+          target.setCustomValidity("");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documents</title>
+    <style>
+      label {
+        display: block;
+      }
+
+      /* 올바르지 않은 입력이 이루어진 input을 선택합니다. */
+      input:invalid {
+        border: 5px solid red;
+      }
+
+      /* 올바른 입력이 이루어졌을 때 input을 선택합니다. */
+      input:valid {
+        border: 5px solid blue;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <label for="txt1">입력 : </label>
+      <input type="text" id="txt1" required />
+
+      <label for="txt1">입력 : </label>
+      <input type="text" id="txt2" required />
+
+      <button>제출</button>
+    </form>
+
+    <script>
+      const inps = document.querySelectorAll("input");
+      const btn = document.querySelector("button");
+
+      btn.addEventListener("click", () => {
+        inps.forEach((item) => {
+          validate(item);
+        });
+      });
+
+      function validate(target) {
+        if (target.validity.valueMissing) {
+          target.setCustomValidity("아무것도 입력되지 않았다구요우!");
+        } else if (target.validity.typeMismatch) {
+          target.setCustomValidity("입력 값의 타입이 틀려먹었습니다.");
+        } else {
+          target.setCustomValidity("");
+        }
+      }
+    </script>
+  </body>
+</html>
