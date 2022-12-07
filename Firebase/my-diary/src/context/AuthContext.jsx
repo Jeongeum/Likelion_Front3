@@ -1,4 +1,5 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
+import { appAuth } from "../firebase/config";
 
 // context 객체를 생성합니다.
 // 컨텍스트를 생성해서 현재 유저의 로그인 정보를 저장한다.
@@ -16,6 +17,8 @@ const authReducer = (state, action) => {
       return { ...state, user: action.payload };
     case "logout":
       return { ...state, user: null };
+    case "authIsReady":
+      return { ...state, user: action.payload, isAuthReady: true };
     default:
       return state;
   }
@@ -23,7 +26,18 @@ const authReducer = (state, action) => {
 
 const AuthContextProvider = ({ children }) => {
   // const [관리할 값, dispatch 함수] = useReducer(리듀서 함수, 관리할 값의 초기화)
-  const [state, dispatch] = useReducer(authReducer, { user: null });
+  const [state, dispatch] = useReducer(authReducer, {
+    user: null,
+    isAuthReady: false,
+  });
+
+  useEffect(() => {
+    const unsubscribe = appAuth.onAuthStateChanged(function (user) {
+      dispatch({ type: "authIsReady", payload: user });
+      unsubscribe();
+    });
+  }, []);
+
   console.log("state : ", state);
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

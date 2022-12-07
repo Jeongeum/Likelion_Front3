@@ -24,6 +24,7 @@ export const useSignup = () => {
           throw new Error("회원가입에 실패했습니다.");
         }
 
+        // 닉네임을 저장하기 위해서
         updateProfile(appAuth.currentUser, { displayName })
           .then(() => {
             console.log(user);
