@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { useState } from "react";
+import { useFirestore } from "../../hooks/useFirestore";
 
-export default function DiaryForm() {
+export default function DiaryForm({ uid }) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const { addDocument, response } = useFirestore("myDiary");
 
   const handleData = (event) => {
     if (event.target.id === "tit") {
@@ -12,9 +15,22 @@ export default function DiaryForm() {
     }
   };
 
+  useEffect(() => {
+    // 통신 성공했다면, 빈문자열로 갱신
+    if (response.success) {
+      setTitle("");
+      setText("");
+    }
+  }, [response.success]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(title, text);
+    addDocument({
+      uid,
+      title,
+      text,
+    });
   };
 
   return (
